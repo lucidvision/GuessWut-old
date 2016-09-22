@@ -2,7 +2,7 @@ import { ref } from '~/config/constants'
 import { removeFriend } from '~/api/friends'
 
 const UPDATE_FRIENDS = 'UPDATE_FRIENDS'
-const ADD_LISTENER = 'ADD_LISTENER'
+const ADD_FRIENDS_LISTENER = 'ADD_FRIENDS_LISTENER'
 
 function updateFriends (friends) {
   return {
@@ -11,9 +11,9 @@ function updateFriends (friends) {
   }
 }
 
-function addListener () {
+function addFriendsListener () {
   return {
-    type: ADD_LISTENER
+    type: ADD_FRIENDS_LISTENER
   }
 }
 
@@ -38,7 +38,7 @@ export function fetchAndSetFriendsListener () {
         dispatch(updateFriends([]))
       }
       if (listenerSet === false) {
-        dispatch(addListener())
+        dispatch(addFriendsListener())
         listenerSet = true
       }
     })
@@ -67,7 +67,7 @@ export default function friends (state = initialState, action) {
         ...state,
         friends: action.friends
       }
-    case ADD_LISTENER :
+    case ADD_FRIENDS_LISTENER :
       return {
         ...state,
         listenerSet: true

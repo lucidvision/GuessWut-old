@@ -14,7 +14,6 @@ class SplashContainer extends Component {
   handleLoginPressed = () => {
     const { email, password } = this.state
     this.props.dispatch(handleAuthWithFirebase(email, password))
-
   }
   handleLoginFinished = (error, result) => {
     if (error) {

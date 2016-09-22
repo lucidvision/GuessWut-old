@@ -55,7 +55,8 @@ export function onAuthChange (user) {
     if (!user) {
       dispatch(notAuthed())
     } else {
-      const { uid, email, displayName, photoURL } = user
+      let { uid, email, displayName, photoURL } = user
+      displayName = displayName || 'No Name'
       updateUser({
         uid,
         email,

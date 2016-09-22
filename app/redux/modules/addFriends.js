@@ -5,7 +5,7 @@ import { addRequest, removeRequest, addFriend } from '~/api/friends'
 const UPDATE_SEARCH_TEXT = 'UPDATE_SEARCH_TEXT'
 const UPDATE_USER_FOUND = 'UPDATE_USER_FOUND'
 const UPDATE_REQUESTS = 'UPDATE_REQUESTS'
-const ADD_LISTENER = 'ADD_LISTENER'
+const ADD_REQUESTS_LISTENER = 'ADD_REQUESTS_LISTENER'
 
 export function updateSearchText (newSearchText) {
   return {
@@ -28,9 +28,9 @@ function updateRequests (users) {
   }
 }
 
-function addListener () {
+function addRequestsListener () {
   return {
-    type: ADD_LISTENER
+    type: ADD_REQUESTS_LISTENER
   }
 }
 
@@ -67,7 +67,7 @@ export function fetchAndSetRequestsListener () {
         dispatch(updateRequests([]))
       }
       if (listenerSet === false) {
-        dispatch(addListener())
+        dispatch(addRequestsListener())
         listenerSet = true
       }
     })
@@ -118,7 +118,7 @@ export default function addFriends (state = initialState, action) {
         ...state,
         requests: action.users
       }
-    case ADD_LISTENER :
+    case ADD_REQUESTS_LISTENER :
       return {
         ...state,
         listenerSet: true
