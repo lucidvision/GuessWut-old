@@ -1,4 +1,4 @@
-import { getAccessToken, authWithToken, updateUser, logout } from '~/api/auth'
+import { authWithEmailandPassword, signupWithEmailandPassword, getAccessToken, authWithToken, updateUser, logout } from '~/api/auth'
 
 const AUTHENTICATING = 'AUTHENTICATING'
 const NOT_AUTHED = 'NOT_AUTHED'
@@ -30,7 +30,18 @@ function loggingOut () {
   }
 }
 
-export function handleAuthWithFirebase () {
+export function handleAuthWithFirebase (email, password) {
+  return function (dispatch, getState) {
+    dispatch(authenticating())
+    return authWithEmailandPassword(email, password)
+      .catch(() => {
+        signupWithEmailandPassword(email, password)
+          .catch((error) => console.warn('Error in handleAuthWithFirebase: ', error))
+      })
+  }
+}
+
+export function handleFacebookAuthWithFirebase () {
   return function (dispatch, getState) {
     dispatch(authenticating())
     return getAccessToken()
