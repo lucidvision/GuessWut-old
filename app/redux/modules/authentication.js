@@ -7,26 +7,26 @@ export const LOGGING_OUT = 'LOGGING_OUT'
 
 function authenticating () {
   return {
-    type: AUTHENTICATING,
+    type: AUTHENTICATING
   }
 }
 
 function notAuthed () {
   return {
-    type: NOT_AUTHED,
+    type: NOT_AUTHED
   }
 }
 
-function isAuthed (uid) {
+function isAuthed (user) {
   return {
     type: IS_AUTHED,
-    uid,
+    user
   }
 }
 
 function loggingOut () {
   return {
-    type: LOGGING_OUT,
+    type: LOGGING_OUT
   }
 }
 
@@ -44,12 +44,13 @@ export function onAuthChange (user) {
     if (!user) {
       dispatch(notAuthed())
     } else {
-      const { uid, displayName, photoURL } = user
+      const { uid, email, displayName, photoURL } = user
       updateUser({
         uid,
+        email,
         displayName,
-        photoURL,
-      }).then(() => dispatch(isAuthed(uid)))
+        photoURL
+      }).then(() => dispatch(isAuthed(user)))
     }
   }
 }
@@ -64,7 +65,7 @@ export function handleUnauth () {
 const initialState = {
   isAuthed: false,
   isAuthenticating: true,
-  authedId: '',
+  authedId: ''
 }
 
 export default function authentication (state = initialState, action) {
@@ -72,19 +73,20 @@ export default function authentication (state = initialState, action) {
     case AUTHENTICATING :
       return {
         ...state,
-        isAuthenticating: true,
+        isAuthenticating: true
       }
     case NOT_AUTHED :
       return {
         isAuthenticating: false,
         isAuthed: false,
-        authedId: '',
+        authedId: ''
       }
     case IS_AUTHED :
       return {
         isAuthed: true,
         isAuthenticating: false,
-        authedId: action.uid,
+        authedId: action.user.uid,
+        user: action.user
       }
     default :
       return state

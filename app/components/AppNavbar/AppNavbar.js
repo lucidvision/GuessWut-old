@@ -3,12 +3,6 @@ import { Platform } from 'react-native'
 import NavigationBar from 'react-native-navbar'
 import { colors } from '~/styles'
 
-AppNavbar.propTypes = {
-  title: PropTypes.string.isRequired,
-  rightButton: PropTypes.element,
-  leftButton: PropTypes.element,
-}
-
 export default function AppNavbar (props) {
   let optionalAttrs = {}
   props.leftButton && (optionalAttrs.leftButton = React.cloneElement(props.leftButton, {
@@ -24,4 +18,10 @@ export default function AppNavbar (props) {
       tintColor={colors.tabPrimary}
       title={{title: props.title}}/>
   )
+}
+
+AppNavbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  rightButton: PropTypes.element,
+  leftButton: PropTypes.element
 }

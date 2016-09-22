@@ -3,16 +3,6 @@ import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { colors } from '~/styles'
 
-Add.propTypes = {
-  size: PropTypes.number.isRequired,
-  style: PropTypes.object,
-  onPress: PropTypes.func.isRequired,
-}
-
-Add.defaultProps = {
-  size: 30,
-}
-
 export default function Add (props) {
   return (
     <TouchableOpacity onPress={props.onPress} style={props.style}>
@@ -22,4 +12,14 @@ export default function Add (props) {
         color={colors.blue} />
     </TouchableOpacity>
   )
+}
+
+Add.propTypes = {
+  size: PropTypes.number.isRequired,
+  style: PropTypes.object,
+  onPress: PropTypes.func.isRequired
+}
+
+Add.defaultProps = {
+  size: 30
 }

@@ -1,10 +1,12 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Text } from 'react-native'
 import { Splash } from '~/components'
 import { connect } from 'react-redux'
 import { handleAuthWithFirebase } from '~/redux/modules/authentication'
 
 class SplashContainer extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired
+  }
   handleLoginFinished = (error, result) => {
     if (error) {
       console.warn('Error in handleLoginFinished: ', error)

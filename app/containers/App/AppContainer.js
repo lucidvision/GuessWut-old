@@ -5,6 +5,7 @@ import { AppNavigator } from '~/containers'
 import { PreSplash, FlashNotification } from '~/components'
 import { firebaseAuth } from '~/config/constants'
 import { onAuthChange } from '~/redux/modules/authentication'
+import { hideFlashNotification } from '~/redux/modules/flashNotification'
 
 class AppContainer extends Component {
   static propTypes = {
@@ -14,6 +15,7 @@ class AppContainer extends Component {
     flashNotificationLocation: PropTypes.string.isRequired,
     flashNotificationText: PropTypes.string.isRequired,
     showFlashNotification: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired
   }
   componentDidMount () {
     firebaseAuth.onAuthStateChanged((user) => this.props.dispatch(onAuthChange(user)))
@@ -46,7 +48,7 @@ function mapStateToProps ({authentication, flashNotification}) {
     flashNotificationIsPermanent: flashNotification.permanent,
     flashNotificationLocation: flashNotification.location,
     flashNotificationText: flashNotification.text,
-    showFlashNotification: flashNotification.showFlashNotification,
+    showFlashNotification: flashNotification.showFlashNotification
   }
 }
 

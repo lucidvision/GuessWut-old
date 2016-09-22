@@ -9,17 +9,17 @@ export default class FlashNotification extends Component {
     permanent: PropTypes.bool.isRequired,
     location: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    onHideNotification: PropTypes.func.isRequired,
+    onHideNotification: PropTypes.func.isRequired
   }
   static defaultProps = {
     permanent: false,
     length: 1500,
-    location: 'top',
+    location: 'top'
   }
   state = {
     width: new Animated.Value(50),
     opacity: new Animated.Value(0.7),
-    textOpacity: new Animated.Value(0),
+    textOpacity: new Animated.Value(0)
   }
   componentDidMount () {
     Animated.spring(this.state.width, {toValue: NOTIFICATION_WIDTH}).start()
@@ -37,7 +37,7 @@ export default class FlashNotification extends Component {
       width: this.state.width,
       opacity: this.state.opacity,
       top: this.props.location === 'top' ? 60 : undefined,
-      bottom: this.props.location === 'top' ? undefined : 60,
+      bottom: this.props.location === 'top' ? undefined : 60
     }
   }
   render () {
@@ -64,5 +64,5 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff'
-  },
+  }
 })

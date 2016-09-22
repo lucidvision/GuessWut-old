@@ -1,11 +1,6 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, Platform } from 'react-native'
+import { View, Text, Platform } from 'react-native'
 import { AppNavbar, Hamburger, Add } from '~/components'
-
-Hosting.propTypes = {
-  openDrawer: PropTypes.func,
-  handleToCreate: PropTypes.func.isRequired,
-}
 
 export default function Hosting (props) {
   return (
@@ -21,6 +16,7 @@ export default function Hosting (props) {
   )
 }
 
-const styles = StyleSheet.create({
-
-})
+Hosting.propTypes = {
+  openDrawer: PropTypes.func,
+  handleToCreate: PropTypes.func.isRequired
+}

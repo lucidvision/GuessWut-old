@@ -3,10 +3,6 @@ import { View, StyleSheet, Text } from 'react-native'
 import { LoginButton } from 'react-native-fbsdk'
 import { colors, fontSizes } from '~/styles'
 
-Splash.propTypes = {
-  onLoginFinished: PropTypes.func.isRequired,
-}
-
 export default function Splash (props) {
   return (
     <View style={styles.container}>
@@ -14,6 +10,7 @@ export default function Splash (props) {
       <View style={styles.loginContainer}>
         <LoginButton
           style={styles.loginButton}
+          readPermissions={['email']}
           onLoginFinished={props.onLoginFinished} />
         <Text style={styles.assuranceText}>
           Don't worry. We don't post anything to Facebook.
@@ -23,6 +20,10 @@ export default function Splash (props) {
   )
 }
 
+Splash.propTypes = {
+  onLoginFinished: PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -30,27 +31,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: 50,
-    paddingBottom: 40,
+    paddingBottom: 40
   },
   title: {
     color: colors.blue,
     fontSize: 40,
     margin: 20,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   loginContainer: {
     paddingLeft: 30,
     paddingRight: 30,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   loginButton: {
     height: 30,
     width: 180,
-    marginBottom: 15,
+    marginBottom: 15
   },
   assuranceText: {
     color: colors.secondary,
     fontSize: fontSizes.secondary,
-    textAlign: 'center',
+    textAlign: 'center'
   }
 })

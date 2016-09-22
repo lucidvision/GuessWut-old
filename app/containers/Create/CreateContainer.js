@@ -1,10 +1,9 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Text } from 'react-native'
 import { Create } from '~/components'
 
 export default class CreateContainer extends Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired
   }
   state = {}
   render () {

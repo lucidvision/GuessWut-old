@@ -4,7 +4,7 @@ import { Hosting } from '~/components'
 export default class HostingContainer extends Component {
   static propTypes = {
     openDrawer: PropTypes.func,
-    navigator: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired
   }
   handleToCreate = () => {
     this.props.navigator.push({

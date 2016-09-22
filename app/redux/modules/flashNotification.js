@@ -6,13 +6,13 @@ export function showFlashNotification ({text, permanent = false, location = 'top
     type: SHOW_FLASH_NOTIFICATION,
     text,
     permanent,
-    location,
+    location
   }
 }
 
 export function hideFlashNotification () {
   return {
-    type: HIDE_FLASH_NOTIFICATION,
+    type: HIDE_FLASH_NOTIFICATION
   }
 }
 
@@ -20,7 +20,7 @@ const initialState = {
   showFlashNotification: false,
   text: '',
   permanent: false,
-  location: 'top',
+  location: 'top'
 }
 
 export default function flashNotification (state = initialState, action) {
@@ -30,7 +30,7 @@ export default function flashNotification (state = initialState, action) {
         showFlashNotification: true,
         text: action.text,
         permanent: action.permanent,
-        location: action.location,
+        location: action.location
       }
     case HIDE_FLASH_NOTIFICATION :
       return initialState

@@ -1,13 +1,7 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import DrawerHeader from './DrawerHeader'
 import DrawerTab from './DrawerTab'
-
-Drawer.propTypes = {
-  activeFooterTab: PropTypes.string.isRequired,
-  onTabSelect: PropTypes.func.isRequired,
-  close: PropTypes.func.isRequired,
-}
 
 export default function Drawer (props) {
   return (
@@ -41,8 +35,14 @@ export default function Drawer (props) {
   )
 }
 
+Drawer.propTypes = {
+  activeFooterTab: PropTypes.string.isRequired,
+  onTabSelect: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   }
 })

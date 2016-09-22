@@ -1,26 +1,48 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, Platform } from 'react-native'
+import { View, Text, StyleSheet, Platform, ActivityIndicator, ListView } from 'react-native'
 import { AppNavbar, Hamburger, Add } from '~/components'
-
-Friends.propTypes = {
-  openDrawer: PropTypes.func,
-  handleToAddFriend: PropTypes.func.isRequired,
-}
+import { colors, fontSizes } from '~/styles'
 
 export default function Friends (props) {
   return (
-    <View>
+    <View style={styles.container}>
       <AppNavbar
         title='Friends'
         leftButton={Platform.OS === 'android' ? <Hamburger onPress={props.openDrawer} /> : null}
         rightButton={<Add onPress={props.handleToAddFriend}/>} />
-      <Text>
-        Friends
-      </Text>
+      {props.listenerSet === false
+        ? <ActivityIndicator size='small' style={styles.activityIndicator} color={colors.secondary} />
+        : props.showFriends
+          ? <ListView
+              enableEmptySections
+              renderRow={props.renderRow}
+              dataSource={props.dataSource} />
+          : <Text style={styles.noFriendsText}>No Friends</Text>}
     </View>
   )
 }
 
-const styles = StyleSheet.create({
+Friends.propTypes = {
+  openDrawer: PropTypes.func,
+  handleToAddFriend: PropTypes.func.isRequired,
+  showFriends: PropTypes.bool.isRequired,
+  dataSource: PropTypes.object.isRequired,
+  renderRow: PropTypes.func.isRequired,
+  listenerSet: PropTypes.bool.isRequired
+}
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.white
+  },
+  activityIndicator: {
+    marginTop: 30
+  },
+  noFriendsText: {
+    padding: 10,
+    fontSize: fontSizes.primary,
+    color: colors.blue,
+    textAlign: 'center'
+  }
 })

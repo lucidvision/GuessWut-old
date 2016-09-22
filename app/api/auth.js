@@ -5,9 +5,9 @@ export function getAccessToken () {
   return AccessToken.getCurrentAccessToken()
 }
 
-export function authWithToken (accesToken) {
+export function authWithToken (accessToken) {
   return firebaseAuth
-    .signInWithCredential(facebookProvider.credential(accesToken))
+    .signInWithCredential(facebookProvider.credential(accessToken))
 }
 
 export function updateUser (user) {

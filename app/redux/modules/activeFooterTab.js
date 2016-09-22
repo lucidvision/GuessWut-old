@@ -3,7 +3,7 @@ const SET_FOOTER_TAB = 'SET_FOOTER_TAB'
 export function setFooterTab (tab) {
   return {
     type: SET_FOOTER_TAB,
-    tab,
+    tab
   }
 }
 

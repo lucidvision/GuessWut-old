@@ -1,11 +1,11 @@
 import firebase from 'firebase'
 
 firebase.initializeApp({
-  apiKey: "AIzaSyCbQV0I21CRwkoXRGynGy3MFDfhBRsllLY",
-  authDomain: "guesswut-249a5.firebaseapp.com",
-  databaseURL: "https://guesswut-249a5.firebaseio.com",
-  storageBucket: "guesswut-249a5.appspot.com",
-  messagingSenderId: "15728671289"
+  apiKey: 'AIzaSyCiHq076GgJh3J_QyAjOvRaWmBIe8QXqMw',
+  authDomain: 'guesswut-324e8.firebaseapp.com',
+  databaseURL: 'https://guesswut-324e8.firebaseio.com',
+  storageBucket: '',
+  messagingSenderId: '243699582400'
 })
 
 const ref = firebase.database().ref()
@@ -15,5 +15,5 @@ const facebookProvider = firebase.auth.FacebookAuthProvider
 export {
   ref,
   firebaseAuth,
-  facebookProvider,
+  facebookProvider
 }

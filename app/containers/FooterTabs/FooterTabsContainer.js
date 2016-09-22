@@ -5,7 +5,7 @@ import { setFooterTab } from '~/redux/modules/activeFooterTab'
 function mapStateToProps ({activeFooterTab}, {navigator}) {
   return {
     activeFooterTab,
-    navigator,
+    navigator
   }
 }
 

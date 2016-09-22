@@ -5,7 +5,7 @@ import { SplashContainer, FooterTabsContainer, SettingsContainer,
 
 export default class AppNavigator extends Component {
   static propTypes = {
-    isAuthed: PropTypes.bool.isRequired,
+    isAuthed: PropTypes.bool.isRequired
   }
   renderScene = (route, navigator) => {
     if (this.props.isAuthed === false) {

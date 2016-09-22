@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { colors, fontSizes } from '~/styles'
 
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   header: {
     fontSize: fontSizes.primary

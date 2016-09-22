@@ -4,7 +4,7 @@ import { Playing } from '~/components'
 export default class PlayingContainer extends Component {
   static propTypes = {
     openDrawer: PropTypes.func,
-    navigator: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired
   }
   state = {}
   handleToSettings = () => {

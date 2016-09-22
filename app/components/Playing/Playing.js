@@ -1,11 +1,6 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, Platform } from 'react-native'
+import { View, Text, Platform } from 'react-native'
 import { AppNavbar, Gear, Hamburger } from '~/components'
-
-Playing.propTypes = {
-  openDrawer: PropTypes.func,
-  handleToSettings: PropTypes.func.isRequired,
-}
 
 export default function Playing (props) {
   return (
@@ -21,6 +16,7 @@ export default function Playing (props) {
   )
 }
 
-const styles = StyleSheet.create({
-
-})
+Playing.propTypes = {
+  openDrawer: PropTypes.func,
+  handleToSettings: PropTypes.func.isRequired
+}

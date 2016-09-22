@@ -1,3 +1,5 @@
 export activeFooterTab from './modules/activeFooterTab'
+export addFriends from './modules/addFriends'
 export authentication from './modules/authentication'
 export flashNotification from './modules/flashNotification'
+export friends from './modules/friends'

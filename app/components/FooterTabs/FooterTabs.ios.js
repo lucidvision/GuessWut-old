@@ -1,14 +1,8 @@
 import React, { PropTypes } from 'react'
-import { TabBarIOS, Text } from 'react-native'
+import { TabBarIOS } from 'react-native'
 import { colors } from '~/styles'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { PlayingContainer, HostingContainer, FriendsContainer } from '~/containers'
-
-FooterTabs.propTypes = {
-  activeFooterTab: PropTypes.string.isRequired,
-  navigator: PropTypes.object.isRequired,
-  onTabSelect: PropTypes.func.isRequired,
-}
 
 export default function FooterTabs (props) {
   return (
@@ -39,4 +33,10 @@ export default function FooterTabs (props) {
       </Icon.TabBarItem>
     </TabBarIOS>
   )
+}
+
+FooterTabs.propTypes = {
+  activeFooterTab: PropTypes.string.isRequired,
+  navigator: PropTypes.object.isRequired,
+  onTabSelect: PropTypes.func.isRequired
 }

@@ -3,13 +3,6 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { colors, fontSizes } from '~/styles'
 
-DrawerTab.propTypes = {
-  title: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
-  onPress: PropTypes.func.isRequired,
-  iconName: PropTypes.string.isRequired,
-}
-
 export default function DrawerTab (props) {
   const color = props.selected === true ? colors.blue : colors.primary
   return (
@@ -23,15 +16,22 @@ export default function DrawerTab (props) {
   )
 }
 
+DrawerTab.propTypes = {
+  title: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
+  onPress: PropTypes.func.isRequired,
+  iconName: PropTypes.string.isRequired
+}
+
 const styles = StyleSheet.create({
   container: {
     margin: 10,
     marginLeft: 20,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   titleText: {
     fontSize: fontSizes.secondary,
-    marginLeft: 10,
+    marginLeft: 10
   }
 })

@@ -1,9 +1,5 @@
-import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
-
-DrawerHeader.propTypes = {
-
-}
+import React from 'react'
+import { View, Text } from 'react-native'
 
 export default function DrawerHeader (props) {
   return (
@@ -14,7 +10,3 @@ export default function DrawerHeader (props) {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-
-})
