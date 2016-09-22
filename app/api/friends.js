@@ -11,3 +11,7 @@ export function removeRequest (uid, fuid) {
 export function addFriend (uid, fuid) {
   return ref.child(`friends/${uid}`).set({[fuid]: true})
 }
+
+export function removeFriend (uid, fuid) {
+  return ref.child(`friends/${uid}/${fuid}`).remove()
+}

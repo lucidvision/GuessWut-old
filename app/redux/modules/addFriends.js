@@ -51,17 +51,21 @@ export function fetchAndSetRequestsListener () {
     const { authentication } = getState()
     let listenerSet = false
     ref.child(`requests/${authentication.authedId}`).on('value', (snapshot) => {
-      let users = []
-      let count = 0
-      snapshot.forEach((childSnapshot) => {
-        count++
-        ref.child(`users/${childSnapshot.key}`).once('value', (snapshot) => {
-          users.push(snapshot.val())
-          if (users.length === count) {
-            dispatch(updateRequests(users))
-          }
+      if (snapshot.exists()) {
+        let users = []
+        let count = 0
+        snapshot.forEach((childSnapshot) => {
+          count++
+          ref.child(`users/${childSnapshot.key}`).once('value', (snapshot) => {
+            users.push(snapshot.val())
+            if (users.length === count) {
+              dispatch(updateRequests(users))
+            }
+          })
         })
-      })
+      } else {
+        dispatch(updateRequests([]))
+      }
       if (listenerSet === false) {
         dispatch(addListener())
         listenerSet = true

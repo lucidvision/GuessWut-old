@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react'
-import { ListView } from 'react-native'
+import { ListView, Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { Friends, Friend } from '~/components'
-import { fetchAndSetFriendsListener } from '~/redux/modules/friends'
+import { fetchAndSetFriendsListener, endFriendship } from '~/redux/modules/friends'
 
 class FriendsContainer extends Component {
   static propTypes = {
@@ -37,7 +37,14 @@ class FriendsContainer extends Component {
     })
   }
   handleRemovePressed = (fuid) => {
-    console.log('fuid')
+    Alert.alert(
+      'Remove Friend',
+      'Are you sure you want to remove this friend?',
+      [
+        {text: 'Yes', onPress: () => this.props.dispatch(endFriendship(fuid))},
+        {text: 'Cancel', onPress: () => {}, style: 'cancel'}
+      ]
+    )
   }
   renderRow = ({displayName, uid}) => {
     return (
