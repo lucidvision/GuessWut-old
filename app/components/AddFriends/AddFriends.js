@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, ListView, ActivityIndicator } from 'react-native'
 import { AppNavbar, Close } from '~/components'
 import { colors, fontSizes } from '~/styles'
-import _ from 'lodash'
 
 export default function AddFriends (props) {
   function onUpdateSearchText (text) {
@@ -26,8 +25,8 @@ export default function AddFriends (props) {
       </View>
       {props.searchText.length > 0
         ? <View style={styles.resultContainer}>
-            <Text style={styles.resultText}>{!_.isEmpty(props.userFound) ? 'User Found!' : 'User not found.'}</Text>
-            {!_.isEmpty(props.userFound)
+            <Text style={styles.resultText}>{props.resultText}</Text>
+            {props.showResult
               ? <TouchableOpacity
                   style={styles.addButton}
                   onPress={props.onAddPressed}>
@@ -37,9 +36,9 @@ export default function AddFriends (props) {
           </View>
         : null}
       <View style={styles.listContainer}>
-        {props.listenerSet === false
+        {props.listenerSet === false && !props.showRequests
           ? <ActivityIndicator size='small' style={styles.activityIndicator} color={colors.secondary} />
-          : props.showRequests
+          : props.requests.length > 0
             ? <ListView
                 renderHeader={props.renderHeader}
                 renderRow={props.renderRow}
@@ -53,7 +52,9 @@ export default function AddFriends (props) {
 AddFriends.propTypes = {
   onBack: PropTypes.func.isRequired,
   searchText: PropTypes.string.isRequired,
-  userFound: PropTypes.object.isRequired,
+  requests: PropTypes.array.isRequired,
+  resultText: PropTypes.string.isRequired,
+  showResult: PropTypes.bool.isRequired,
   findFriend: PropTypes.func.isRequired,
   onAddPressed: PropTypes.func.isRequired,
   showRequests: PropTypes.bool.isRequired,
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
     padding: 10
   },
   resultText: {
+    flex: 1,
     padding: 10,
     color: colors.blue,
     fontSize: fontSizes.secondary

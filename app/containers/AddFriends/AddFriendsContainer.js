@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { ListView } from 'react-native'
 import { connect } from 'react-redux'
 import { AddFriends } from '~/components'
-import { fetchAndSetRequestsListener, updateSearchText, findFriend, sendRequest, confirmRequest } from '~/redux/modules/addFriends'
+import { fetchAndSetRequestsListener, updateSearchText, updateUserFound, findFriend, sendRequest, confirmRequest } from '~/redux/modules/addFriends'
 import Header from '~/components/AddFriends/Header'
 import Request from '~/components/AddFriends/Request'
 import { showFlashNotification } from '~/redux/modules/flashNotification'
@@ -14,6 +14,8 @@ class AddFriendsContainer extends Component {
     dispatch: PropTypes.func.isRequired,
     searchText: PropTypes.string.isRequired,
     userFound: PropTypes.object.isRequired,
+    ruids: PropTypes.array.isRequired,
+    fuids: PropTypes.array.isRequired,
     requests: PropTypes.array.isRequired,
     listenerSet: PropTypes.bool.isRequired
   }
@@ -21,7 +23,8 @@ class AddFriendsContainer extends Component {
     super(props)
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     this.state = {
-      dataSource: this.ds.cloneWithRows(props.requests)
+      dataSource: this.ds.cloneWithRows(props.requests),
+      showRequests: false
     }
   }
   componentDidMount () {
@@ -35,7 +38,8 @@ class AddFriendsContainer extends Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.requests !== this.props.requests) {
       this.setState({
-        dataSource: this.ds.cloneWithRows(nextProps.requests)
+        dataSource: this.ds.cloneWithRows(nextProps.requests),
+        showRequests: true
       })
     }
   }
@@ -52,7 +56,11 @@ class AddFriendsContainer extends Component {
   }
   handleConfirmPressed = (fuid) => {
     this.props.dispatch(confirmRequest(fuid))
-      .then(() => this.props.dispatch(showFlashNotification({text: 'Friend Confirmed'})))
+      .then(() => {
+        this.props.dispatch(showFlashNotification({text: 'Friend Confirmed'}))
+        this.props.dispatch(updateSearchText(''))
+        this.props.dispatch(updateUserFound({}))
+      })
       .catch(() => this.props.dispatch(showFlashNotification({text: 'Error Confirming Friend'})))
   }
   renderHeader = () => {
@@ -67,15 +75,32 @@ class AddFriendsContainer extends Component {
     )
   }
   render () {
+    const uid = Object.keys(this.props.userFound)[0]
+    const isAlreadyFriend = _.includes(this.props.fuids, uid)
+    const isAlreadyRequested = _.includes(this.props.ruids, uid)
+    const friendFound = !_.isEmpty(this.props.userFound)
+    let resultText
+    if (isAlreadyFriend) {
+      resultText = 'User is already your friend.'
+    } else if (isAlreadyRequested) {
+      resultText = 'User is waiting for your confirmation.'
+    } else if (friendFound) {
+      resultText = 'User found!'
+    } else {
+      resultText = 'User not found.'
+    }
+
     return (
       <AddFriends
         onBack={this.props.navigator.pop}
         searchText={this.props.searchText}
-        userFound={this.props.userFound}
+        requests={this.props.requests}
+        resultText={resultText}
+        showResult={!isAlreadyFriend && !isAlreadyRequested && friendFound}
         updateSearchText={this.updateSearchText}
         findFriend={this.findFriend}
         onAddPressed={this.handleAddPressed}
-        showRequests={this.props.requests.length > 0}
+        showRequests={this.state.showRequests}
         dataSource={this.state.dataSource}
         renderHeader={this.renderHeader}
         renderRow={this.renderRow}
@@ -84,12 +109,14 @@ class AddFriendsContainer extends Component {
   }
 }
 
-function mapStateToProps ({addFriends}) {
+function mapStateToProps ({addFriends, friends}) {
   return {
     searchText: addFriends.searchText,
     userFound: addFriends.userFound,
-    listenerSet: addFriends.listenerSet,
-    requests: addFriends.requests
+    requests: addFriends.requests,
+    ruids: addFriends.ruids,
+    fuids: friends.fuids,
+    listenerSet: addFriends.listenerSet
   }
 }
 

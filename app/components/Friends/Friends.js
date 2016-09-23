@@ -10,9 +10,9 @@ export default function Friends (props) {
         title='Friends'
         leftButton={Platform.OS === 'android' ? <Hamburger onPress={props.openDrawer} /> : null}
         rightButton={<Add onPress={props.handleToAddFriend}/>} />
-      {props.listenerSet === false
+      {props.listenerSet === false || !props.showFriends
         ? <ActivityIndicator size='small' style={styles.activityIndicator} color={colors.secondary} />
-        : props.showFriends
+        : props.friends.length > 0
           ? <ListView
               enableEmptySections
               renderRow={props.renderRow}
@@ -25,6 +25,7 @@ export default function Friends (props) {
 Friends.propTypes = {
   openDrawer: PropTypes.func,
   handleToAddFriend: PropTypes.func.isRequired,
+  friends: PropTypes.array.isRequired,
   showFriends: PropTypes.bool.isRequired,
   dataSource: PropTypes.object.isRequired,
   renderRow: PropTypes.func.isRequired,

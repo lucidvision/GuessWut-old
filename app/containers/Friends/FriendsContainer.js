@@ -16,7 +16,8 @@ class FriendsContainer extends Component {
     super(props)
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     this.state = {
-      dataSource: this.ds.cloneWithRows(props.friends)
+      dataSource: this.ds.cloneWithRows(props.friends),
+      showFriends: false
     }
   }
   componentDidMount () {
@@ -27,7 +28,8 @@ class FriendsContainer extends Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.friends !== this.props.friends) {
       this.setState({
-        dataSource: this.ds.cloneWithRows(nextProps.friends)
+        dataSource: this.ds.cloneWithRows(nextProps.friends),
+        showFriends: true
       })
     }
   }
@@ -59,7 +61,8 @@ class FriendsContainer extends Component {
       <Friends
         handleToAddFriend={this.handleToAddFriend}
         openDrawer={this.props.openDrawer}
-        showFriends={this.props.friends.length > 0}
+        friends={this.props.friends}
+        showFriends={this.state.showFriends}
         dataSource={this.state.dataSource}
         renderRow={this.renderRow}
         listenerSet={this.props.listenerSet} />

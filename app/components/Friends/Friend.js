@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border
   },
   nameText: {
+    flex: 1,
     padding: 10,
     fontSize: fontSizes.secondary,
     color: colors.primary

@@ -4,9 +4,10 @@ import { removeFriend } from '~/api/friends'
 const UPDATE_FRIENDS = 'UPDATE_FRIENDS'
 const ADD_FRIENDS_LISTENER = 'ADD_FRIENDS_LISTENER'
 
-function updateFriends (friends) {
+function updateFriends (fuids, friends) {
   return {
     type: UPDATE_FRIENDS,
+    fuids,
     friends
   }
 }
@@ -23,6 +24,7 @@ export function fetchAndSetFriendsListener () {
     let listenerSet = false
     ref.child(`friends/${authentication.authedId}`).on('value', (snapshot) => {
       if (snapshot.exists()) {
+        let userIds = Object.keys(snapshot.val())
         let users = []
         let count = 0
         snapshot.forEach((childSnapshot) => {
@@ -30,12 +32,12 @@ export function fetchAndSetFriendsListener () {
           ref.child(`users/${childSnapshot.key}`).once('value', (snapshot) => {
             users.push(snapshot.val())
             if (users.length === count) {
-              dispatch(updateFriends(users))
+              dispatch(updateFriends(userIds, users))
             }
           })
         })
       } else {
-        dispatch(updateFriends([]))
+        dispatch(updateFriends([], []))
       }
       if (listenerSet === false) {
         dispatch(addFriendsListener())
@@ -56,6 +58,7 @@ export function endFriendship (fuid) {
 }
 
 const initialState = {
+  fuids: [],
   friends: [],
   listenerSet: false
 }
@@ -65,6 +68,7 @@ export default function friends (state = initialState, action) {
     case UPDATE_FRIENDS :
       return {
         ...state,
+        fuids: action.fuids,
         friends: action.friends
       }
     case ADD_FRIENDS_LISTENER :

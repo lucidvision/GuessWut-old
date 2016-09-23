@@ -14,3 +14,26 @@
   uid
     fuid1
     fuid2
+
+/games
+  gameId
+    gameId
+    hostId
+    original
+    modified
+    guesses
+      text
+      gameId
+      playerId
+    playerIds
+      uid
+
+/playing
+  uid
+    gameId1
+    gameId2
+
+/hosting
+  uid
+    gameId1
+    gameId2
