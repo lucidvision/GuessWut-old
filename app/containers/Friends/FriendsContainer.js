@@ -16,8 +16,7 @@ class FriendsContainer extends Component {
     super(props)
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     this.state = {
-      dataSource: this.ds.cloneWithRows(props.friends),
-      showFriends: false
+      dataSource: this.ds.cloneWithRows(props.friends)
     }
   }
   componentDidMount () {
@@ -28,15 +27,12 @@ class FriendsContainer extends Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.friends !== this.props.friends) {
       this.setState({
-        dataSource: this.ds.cloneWithRows(nextProps.friends),
-        showFriends: true
+        dataSource: this.ds.cloneWithRows(nextProps.friends)
       })
     }
   }
   handleToAddFriend = () => {
-    this.props.navigator.push({
-      addFriends: true
-    })
+    this.props.navigator.push({addFriends: true})
   }
   handleRemovePressed = (fuid) => {
     Alert.alert(
@@ -51,8 +47,8 @@ class FriendsContainer extends Component {
   renderRow = ({displayName, uid}) => {
     return (
       <Friend
-        name={displayName}
         fuid={uid}
+        name={displayName}
         onRemovePressed={this.handleRemovePressed} />
     )
   }
@@ -62,7 +58,6 @@ class FriendsContainer extends Component {
         handleToAddFriend={this.handleToAddFriend}
         openDrawer={this.props.openDrawer}
         friends={this.props.friends}
-        showFriends={this.state.showFriends}
         dataSource={this.state.dataSource}
         renderRow={this.renderRow}
         listenerSet={this.props.listenerSet} />

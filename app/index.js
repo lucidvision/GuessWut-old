@@ -13,7 +13,6 @@ function rootReducer (state, action) {
   if (action.type === LOGGING_OUT) {
     state = undefined
   }
-
   return appReducer(state, action)
 }
 

@@ -1,7 +1,7 @@
 import { ref } from '~/config/constants'
 
 export function addRequest (uid, fuid) {
-  return ref.child(`requests/${fuid}`).set({[uid]: true})
+  return ref.child(`requests/${fuid}`).update({[uid]: true})
 }
 
 export function removeRequest (uid, fuid) {
@@ -9,7 +9,7 @@ export function removeRequest (uid, fuid) {
 }
 
 export function addFriend (uid, fuid) {
-  return ref.child(`friends/${uid}`).set({[fuid]: true})
+  return ref.child(`friends/${uid}`).update({[fuid]: true})
 }
 
 export function removeFriend (uid, fuid) {

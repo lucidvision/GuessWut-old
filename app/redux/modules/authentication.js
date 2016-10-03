@@ -1,4 +1,10 @@
-import { authWithEmailandPassword, signupWithEmailandPassword, getAccessToken, authWithToken, updateUser, logout } from '~/api/auth'
+import { authWithEmailandPassword, signupWithEmailandPassword, getAccessToken,
+  authWithToken, logout } from '~/api/auth'
+import { updateUser } from '~/api/users'
+import { fetchAndSetUserListener } from '~/redux/modules/users'
+import { fetchAndSetFriendsListener } from '~/redux/modules/friends'
+import { fetchAndSetRequestsListener } from '~/redux/modules/addFriends'
+import { fetchAndSetHostingListener } from '~/redux/modules/games'
 
 const AUTHENTICATING = 'AUTHENTICATING'
 const NOT_AUTHED = 'NOT_AUTHED'
@@ -11,16 +17,16 @@ function authenticating () {
   }
 }
 
-function notAuthed () {
+export function notAuthed () {
   return {
     type: NOT_AUTHED
   }
 }
 
-function isAuthed (user) {
+function isAuthed (uid) {
   return {
     type: IS_AUTHED,
-    user
+    uid
   }
 }
 
@@ -50,20 +56,17 @@ export function handleFacebookAuthWithFirebase () {
   }
 }
 
-export function onAuthChange (user) {
+export function onAuthChange ({uid, email, displayName}) {
   return function (dispatch) {
-    if (!user) {
-      dispatch(notAuthed())
-    } else {
-      let { uid, email, displayName, photoURL } = user
-      displayName = displayName || 'No Name'
-      updateUser({
-        uid,
-        email,
-        displayName,
-        photoURL
-      }).then(() => dispatch(isAuthed(user)))
-    }
+    const user = {uid, email, displayName}
+    updateUser(user)
+    .then(() => dispatch(isAuthed(uid)))
+    .then(() => Promise.all([
+      dispatch(fetchAndSetUserListener(uid)),
+      dispatch(fetchAndSetHostingListener(uid)),
+      dispatch(fetchAndSetFriendsListener(uid)),
+      dispatch(fetchAndSetRequestsListener(uid))
+    ]))
   }
 }
 
@@ -97,8 +100,7 @@ export default function authentication (state = initialState, action) {
       return {
         isAuthed: true,
         isAuthenticating: false,
-        authedId: action.user.uid,
-        user: action.user
+        authedId: action.uid
       }
     default :
       return state

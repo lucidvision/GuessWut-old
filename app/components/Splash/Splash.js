@@ -6,10 +6,10 @@ import { colors, fontSizes } from '~/styles'
 export default function Splash (props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>GuessWut</Text>
+      <Text style={styles.title}>Coder</Text>
       <View style={styles.loginContainer}>
         <TextInput
-          style={styles.emailText}
+          style={styles.input}
           autoFocus
           autoCapitalize='none'
           autoCorrect={false}
@@ -21,7 +21,7 @@ export default function Splash (props) {
           onChangeText={(text) => props.changeEmail(text)}
           placeholder={'Email Address'} />
         <TextInput
-          style={styles.passwordText}
+          style={styles.input}
           ref={(el) => this.password = el}
           autoCapitalize='none'
           autoCorrect={false}
@@ -77,15 +77,7 @@ const styles = StyleSheet.create({
   loginContainer: {
     alignItems: 'center'
   },
-  emailText: {
-    height: 40,
-    width: 300,
-    borderColor: colors.blue,
-    borderWidth: 1,
-    padding: 10,
-    margin: 10
-  },
-  passwordText: {
+  input: {
     height: 40,
     width: 300,
     borderColor: colors.blue,

@@ -2,7 +2,7 @@
   uid
     name
     uid
-    username
+    email
     avatar
 
 /requests
@@ -16,24 +16,28 @@
     fuid2
 
 /games
-  gameId
-    gameId
-    hostId
-    original
-    modified
-    guesses
-      text
-      gameId
-      playerId
-    playerIds
+  gid
+    gid
+    uid
+    message
+    code
+    guessed
+    completed
+    players
       uid
+        displayName
+        email
+        guess
+        score
+        uid
+
 
 /playing
   uid
-    gameId1
-    gameId2
+    gid1
+    gid2
 
 /hosting
   uid
-    gameId1
-    gameId2
+    gid1
+    gid2

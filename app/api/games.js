@@ -1,0 +1,42 @@
+import { ref } from '~/config/constants'
+
+export function createGame (game) {
+  const gid = ref.child('games').push().key
+  const gamePromise = ref.child(`games/${gid}`).set({...game, gid})
+  return {
+    gid,
+    gamePromise
+  }
+}
+
+export function saveToGamesHosting (gid, huid) {
+  return ref.child(`hosting/${huid}`).set({[gid]: true})
+}
+
+export function saveToGamesPlaying (gid, puid) {
+  return ref.child(`playing/${puid}`).set({[gid]: true})
+}
+
+export function saveToGamesCompleted (gid, uid) {
+  return ref.child(`completed/${uid}`).set({[gid]: true})
+}
+
+export function saveGuessToGames (gid, puid, guess, score) {
+  let updates = {}
+  updates[`games/${gid}/guessed/${puid}`] = true
+  updates[`games/${gid}/players/${puid}/guess`] = guess
+  updates[`games/${gid}/players/${puid}/score`] = score
+  return ref.update(updates)
+}
+
+export function completeGame (gid) {
+  return ref.child(`games/${gid}`).update({completed: true})
+}
+
+export function removeFromGamesHosting (gid, huid) {
+  return ref.child(`hosting/${huid}/${gid}`).remove()
+}
+
+export function removeFromGamesPlaying (gid, puid) {
+  return ref.child(`playing/${puid}/${gid}`).remove()
+}

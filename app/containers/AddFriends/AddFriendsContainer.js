@@ -2,7 +2,8 @@ import React, { PropTypes, Component } from 'react'
 import { ListView } from 'react-native'
 import { connect } from 'react-redux'
 import { AddFriends } from '~/components'
-import { fetchAndSetRequestsListener, updateSearchText, updateUserFound, findFriend, sendRequest, confirmRequest } from '~/redux/modules/addFriends'
+import { fetchAndSetRequestsListener, updateSearchText, updateUserFound,
+  findFriend, sendRequest, confirmRequest } from '~/redux/modules/addFriends'
 import Header from '~/components/AddFriends/Header'
 import Request from '~/components/AddFriends/Request'
 import { showFlashNotification } from '~/redux/modules/flashNotification'
@@ -23,8 +24,7 @@ class AddFriendsContainer extends Component {
     super(props)
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     this.state = {
-      dataSource: this.ds.cloneWithRows(props.requests),
-      showRequests: false
+      dataSource: this.ds.cloneWithRows(props.requests)
     }
   }
   componentDidMount () {
@@ -38,8 +38,7 @@ class AddFriendsContainer extends Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.requests !== this.props.requests) {
       this.setState({
-        dataSource: this.ds.cloneWithRows(nextProps.requests),
-        showRequests: true
+        dataSource: this.ds.cloneWithRows(nextProps.requests)
       })
     }
   }
@@ -89,7 +88,6 @@ class AddFriendsContainer extends Component {
     } else {
       resultText = 'User not found.'
     }
-
     return (
       <AddFriends
         onBack={this.props.navigator.pop}
@@ -100,7 +98,6 @@ class AddFriendsContainer extends Component {
         updateSearchText={this.updateSearchText}
         findFriend={this.findFriend}
         onAddPressed={this.handleAddPressed}
-        showRequests={this.state.showRequests}
         dataSource={this.state.dataSource}
         renderHeader={this.renderHeader}
         renderRow={this.renderRow}

@@ -10,14 +10,17 @@ export default function Friends (props) {
         title='Friends'
         leftButton={Platform.OS === 'android' ? <Hamburger onPress={props.openDrawer} /> : null}
         rightButton={<Add onPress={props.handleToAddFriend}/>} />
-      {props.listenerSet === false || !props.showFriends
-        ? <ActivityIndicator size='small' style={styles.activityIndicator} color={colors.secondary} />
-        : props.friends.length > 0
-          ? <ListView
-              enableEmptySections
-              renderRow={props.renderRow}
-              dataSource={props.dataSource} />
-          : <Text style={styles.noFriendsText}>No Friends</Text>}
+      <View style={styles.listContainer}>
+        {props.listenerSet === false
+          ? <ActivityIndicator size='small' style={styles.activityIndicator} color={colors.secondary} />
+          : props.friends.length > 0
+            ? <ListView
+                enableEmptySections
+                automaticallyAdjustContentInsets={false}
+                renderRow={props.renderRow}
+                dataSource={props.dataSource} />
+            : <Text style={styles.noFriendsText}>No Friends</Text>}
+      </View>
     </View>
   )
 }
@@ -26,7 +29,6 @@ Friends.propTypes = {
   openDrawer: PropTypes.func,
   handleToAddFriend: PropTypes.func.isRequired,
   friends: PropTypes.array.isRequired,
-  showFriends: PropTypes.bool.isRequired,
   dataSource: PropTypes.object.isRequired,
   renderRow: PropTypes.func.isRequired,
   listenerSet: PropTypes.bool.isRequired
@@ -36,6 +38,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white
+  },
+  listContainer: {
+    flex: 1,
+    backgroundColor: colors.white,
+    marginBottom: 50
   },
   activityIndicator: {
     marginTop: 30

@@ -14,7 +14,7 @@ export default function Drawer (props) {
           props.onTabSelect('playing')
           props.close()
         }}
-        iconName='ios-home-outline' />
+        iconName='ios-trophy-outline' />
       <DrawerTab
         title='Hosting'
         selected={props.activeFooterTab === 'hosting'}
@@ -22,7 +22,7 @@ export default function Drawer (props) {
           props.onTabSelect('hosting')
           props.close()
         }}
-        iconName='ios-trophy-outline' />
+        iconName='ios-home-outline' />
       <DrawerTab
         title='Friends'
         selected={props.activeFooterTab === 'friends'}

@@ -17,3 +17,6 @@ export {
   firebaseAuth,
   facebookProvider
 }
+
+export const minimumWordLength = 20
+export const maximumWordLength = 100

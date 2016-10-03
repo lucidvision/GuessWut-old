@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, ListView, ActivityIndicator } from 'react-native'
-import { AppNavbar, Close } from '~/components'
+import { AppNavbar, Button } from '~/components'
 import { colors, fontSizes } from '~/styles'
 
 export default function AddFriends (props) {
@@ -12,10 +12,10 @@ export default function AddFriends (props) {
     <View style={styles.container}>
       <AppNavbar
         title='Add Friends'
-        leftButton={<Close onPress={props.onBack}/>} />
+        leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
       <View style={styles.searchContainer}>
         <TextInput
-          style={styles.searchText}
+          style={styles.searchInput}
           maxLength={30}
           autoCapitalize={'none'}
           autoCorrect={false}
@@ -36,7 +36,7 @@ export default function AddFriends (props) {
           </View>
         : null}
       <View style={styles.listContainer}>
-        {props.listenerSet === false && !props.showRequests
+        {props.listenerSet === false
           ? <ActivityIndicator size='small' style={styles.activityIndicator} color={colors.secondary} />
           : props.requests.length > 0
             ? <ListView
@@ -57,7 +57,6 @@ AddFriends.propTypes = {
   showResult: PropTypes.bool.isRequired,
   findFriend: PropTypes.func.isRequired,
   onAddPressed: PropTypes.func.isRequired,
-  showRequests: PropTypes.bool.isRequired,
   dataSource: PropTypes.object.isRequired,
   renderHeader: PropTypes.func.isRequired,
   renderRow: PropTypes.func.isRequired,
@@ -73,11 +72,11 @@ const styles = StyleSheet.create({
     marginTop: 30,
     padding: 10
   },
-  searchText: {
+  searchInput: {
     height: 40,
     borderColor: colors.blue,
     borderWidth: 1,
-    paddingLeft: 10
+    padding: 10
   },
   resultContainer: {
     flexDirection: 'row',

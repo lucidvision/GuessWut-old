@@ -5,7 +5,6 @@ import { addRequest, removeRequest, addFriend } from '~/api/friends'
 const UPDATE_SEARCH_TEXT = 'UPDATE_SEARCH_TEXT'
 const UPDATE_USER_FOUND = 'UPDATE_USER_FOUND'
 const UPDATE_REQUESTS = 'UPDATE_REQUESTS'
-const ADD_REQUESTS_LISTENER = 'ADD_REQUESTS_LISTENER'
 
 export function updateSearchText (newSearchText) {
   return {
@@ -29,16 +28,10 @@ function updateRequests (ruids, users) {
   }
 }
 
-function addRequestsListener () {
-  return {
-    type: ADD_REQUESTS_LISTENER
-  }
-}
-
 export function findFriend (email) {
   return function (dispatch, getState) {
-    const { authentication } = getState()
-    if (email !== authentication.user.email) {
+    const { users } = getState()
+    if (email !== users.user.email) {
       searchUsersByEmail(email)
         .then((userWithId) => {
           dispatch(updateUserFound(userWithId))
@@ -47,13 +40,11 @@ export function findFriend (email) {
   }
 }
 
-export function fetchAndSetRequestsListener () {
-  return function (dispatch, getState) {
-    const { authentication } = getState()
-    let listenerSet = false
-    ref.child(`requests/${authentication.authedId}`).on('value', (snapshot) => {
+export function fetchAndSetRequestsListener (uid) {
+  return function (dispatch) {
+    ref.child(`requests/${uid}`).on('value', (snapshot) => {
       if (snapshot.exists()) {
-        let userIds = Object.keys(snapshot.val())
+        let uids = Object.keys(snapshot.val())
         let users = []
         let count = 0
         snapshot.forEach((childSnapshot) => {
@@ -61,16 +52,12 @@ export function fetchAndSetRequestsListener () {
           ref.child(`users/${childSnapshot.key}`).once('value', (snapshot) => {
             users.push(snapshot.val())
             if (users.length === count) {
-              dispatch(updateRequests(userIds, users))
+              dispatch(updateRequests(uids, users))
             }
           })
         })
       } else {
         dispatch(updateRequests([], []))
-      }
-      if (listenerSet === false) {
-        dispatch(addRequestsListener())
-        listenerSet = true
       }
     })
   }
@@ -123,11 +110,7 @@ export default function addFriends (state = initialState, action) {
       return {
         ...state,
         ruids: action.ruids,
-        requests: action.users
-      }
-    case ADD_REQUESTS_LISTENER :
-      return {
-        ...state,
+        requests: action.users,
         listenerSet: true
       }
     default :

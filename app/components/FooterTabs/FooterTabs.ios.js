@@ -9,7 +9,7 @@ export default function FooterTabs (props) {
     <TabBarIOS tintColor={colors.active}>
       <Icon.TabBarItem
         iconSize={35}
-        iconName='ios-home-outline'
+        iconName='ios-trophy-outline'
         title='Playing'
         selected={props.activeFooterTab === 'playing'}
         onPress={() => props.onTabSelect('playing')}>
@@ -17,7 +17,7 @@ export default function FooterTabs (props) {
       </Icon.TabBarItem>
       <Icon.TabBarItem
         iconSize={35}
-        iconName='ios-trophy-outline'
+        iconName='ios-home-outline'
         title='Hosting'
         selected={props.activeFooterTab === 'hosting'}
         onPress={() => props.onTabSelect('hosting')}>
