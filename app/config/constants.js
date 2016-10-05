@@ -18,5 +18,5 @@ export {
   facebookProvider
 }
 
-export const minimumWordLength = 20
-export const maximumWordLength = 100
+export const minimumWordLength = 5
+export const maximumWordLength = 30

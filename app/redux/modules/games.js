@@ -39,9 +39,10 @@ export function selectGame (game) {
   }
 }
 
-export function fetchAndSetPlayingListener (uid) {
-  return function (dispatch) {
-    ref.child(`playing/${uid}`).on('value', (snapshot) => {
+export function fetchAndSetPlayingListener () {
+  return function (dispatch, getState) {
+    const { authentication } = getState()
+    ref.child(`playing/${authentication.authedId}`).on('value', (snapshot) => {
       if (snapshot.exists()) {
         let games = {}
         let count = 0

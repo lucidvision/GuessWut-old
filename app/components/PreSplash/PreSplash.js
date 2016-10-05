@@ -5,8 +5,8 @@ import { colors, fontSizes } from '~/styles'
 export default function PreSplash (props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>
-        PreSplash
+      <Text style={styles.headerText}>
+        Loading...
       </Text>
     </View>
   )
@@ -19,7 +19,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  header: {
-    fontSize: fontSizes.primary
+  headerText: {
+    width: 300,
+    padding: 10,
+    fontSize: fontSizes.primary,
+    color: colors.blue,
+    textAlign: 'center'
   }
 })

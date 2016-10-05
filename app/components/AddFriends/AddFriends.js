@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TextInput, TouchableOpacity, ListView, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, Text, TextInput,
+  TouchableOpacity, ListView, ActivityIndicator } from 'react-native'
 import { AppNavbar, Button } from '~/components'
 import { colors, fontSizes } from '~/styles'
 
@@ -37,7 +38,10 @@ export default function AddFriends (props) {
         : null}
       <View style={styles.listContainer}>
         {props.listenerSet === false
-          ? <ActivityIndicator size='small' style={styles.activityIndicator} color={colors.secondary} />
+          ? <ActivityIndicator
+              size='small'
+              style={styles.activityIndicator}
+              color={colors.secondary} />
           : props.requests.length > 0
             ? <ListView
                 renderHeader={props.renderHeader}

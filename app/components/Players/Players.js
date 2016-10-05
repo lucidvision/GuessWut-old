@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator, ListView, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator,
+  ListView, TouchableOpacity } from 'react-native'
 import { AppNavbar, Back } from '~/components'
 import { colors, fontSizes } from '~/styles'
 
@@ -11,7 +12,10 @@ export default function Players (props) {
         leftButton={<Back onPress={props.onBack}/>} />
       <View style={styles.listContainer}>
         {props.listenerSet === false
-          ? <ActivityIndicator size='small' style={styles.activityIndicator} color={colors.secondary} />
+          ? <ActivityIndicator
+              size='small'
+              style={styles.activityIndicator}
+              color={colors.secondary} />
           : props.friends.length > 0
             ? <ListView
                 enableEmptySections

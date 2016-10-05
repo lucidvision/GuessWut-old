@@ -10,15 +10,15 @@ export function createGame (game) {
 }
 
 export function saveToGamesHosting (gid, huid) {
-  return ref.child(`hosting/${huid}`).set({[gid]: true})
+  return ref.child(`hosting/${huid}`).update({[gid]: true})
 }
 
 export function saveToGamesPlaying (gid, puid) {
-  return ref.child(`playing/${puid}`).set({[gid]: true})
+  return ref.child(`playing/${puid}`).update({[gid]: true})
 }
 
 export function saveToGamesCompleted (gid, uid) {
-  return ref.child(`completed/${uid}`).set({[gid]: true})
+  return ref.child(`completed/${uid}`).update({[gid]: true})
 }
 
 export function saveGuessToGames (gid, puid, guess, score) {

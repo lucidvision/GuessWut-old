@@ -8,17 +8,17 @@ export default function Game (props) {
     <TouchableOpacity onPress={() => props.onGameSelected(props.game)}>
       <View style={styles.container}>
         <Text style={styles.codeText}>{props.game.code}</Text>
-        {props.guessed
-          ? props.game.completed
+        {props.game.completed
+          ? <Icon
+              name='ios-alert-outline'
+              size={40}
+              color={colors.blue} />
+          : props.guessed
             ? <Icon
-                name='ios-alert-outline'
-                size={40}
-                color={colors.blue} />
-            : <Icon
                 name='ios-checkmark-circle-outline'
                 size={40}
                 color={colors.blue} />
-          : null}
+            : null}
       </View>
     </TouchableOpacity>
   )

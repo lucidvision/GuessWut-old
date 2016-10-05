@@ -29,7 +29,8 @@ class CreateContainer extends Component {
     return shuffled.join(' ')
   }
   handleCreateButtonPressed = () => {
-    if (this.state.message.length < minimumWordLength || this.state.message.length > maximumWordLength) {
+    const wordCount = this.state.message.split(' ').length
+    if (wordCount < minimumWordLength || wordCount > maximumWordLength) {
       Alert.alert(
         'Message Length',
         `Your message needs to be between ${minimumWordLength} and ${maximumWordLength} words long.`
