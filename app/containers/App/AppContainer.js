@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
-import { View } from 'react-native'
-import { connect } from 'react-redux'
+import { View, Alert } from 'react-native'
 import FCM from 'react-native-fcm'
+import { connect } from 'react-redux'
 import { AppNavigator } from '~/containers'
 import { PreSplash, FlashNotification, InputModal } from '~/components'
 import { firebaseAuth } from '~/config/constants'
@@ -26,6 +26,23 @@ class AppContainer extends Component {
     showModal: false
   }
   componentDidMount () {
+    FCM.requestPermissions()
+    FCM.getFCMToken().then(token => {
+      console.log('get: ' + token)
+    })
+    this.notificationUnsubscribe = FCM.on('notification', (notif) => {
+      Alert.alert('Notification', 'It worked!')
+      console.log(notif)
+      if (notif.opened_from_tray) {
+        console.log('opened from tray')
+      }
+      if (notif.notification) {
+        console.log('It worked!')
+      }
+    })
+    this.refreshUnsubscribe = FCM.on('refreshToken', (token) => {
+      console.log(token)
+    })
     firebaseAuth.onAuthStateChanged((user) => {
       if (!user) {
         this.props.dispatch(notAuthed())
@@ -46,22 +63,6 @@ class AppContainer extends Component {
           }
         })
       }
-    })
-    FCM.requestPermissions()
-    FCM.getFCMToken().then(token => {
-      console.log(token)
-    })
-    this.notificationUnsubscribe = FCM.on('notification', (notif) => {
-        // there are two parts of notif. notif.notification contains the notification payload, notif.data contains data payload
-      if (notif.opened_from_tray) {
-        console.log('opened from tray')
-      }
-      if (notif.notification) {
-        console.log(notif.notification)
-      }
-    })
-    this.refreshUnsubscribe = FCM.on('refreshToken', (token) => {
-      console.log(token)
     })
   }
   componentWillUnmount () {

@@ -1,18 +1,8 @@
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
-
 #import "AppDelegate.h"
 
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-@import Firebase;
 #import "RNFIRMessaging.h"
 
 @implementation AppDelegate
@@ -44,15 +34,20 @@
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
   - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
   {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FCMNotificationReceived object:self userInfo:notification.request.content.userInfo];
-    completionHandler(UNNotificationPresentationOptionAlert);
+   [[NSNotificationCenter defaultCenter] postNotificationName:FCMNotificationReceived object:self userInfo:notification.request.content.userInfo];
+   completionHandler(UNNotificationPresentationOptionAlert);
   }
 
   - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
   {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FCMNotificationReceived object:self userInfo:response.notification.request.content.userInfo];
+   [[NSNotificationCenter defaultCenter] postNotificationName:FCMNotificationReceived object:self userInfo:response.notification.request.content.userInfo];
   }
 #endif
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler{
+  [[NSNotificationCenter defaultCenter] postNotificationName:FCMNotificationReceived object:self userInfo:userInfo];
+  completionHandler(UIBackgroundFetchResultNoData);
+}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [FBSDKAppEvents activateApp];
