@@ -7,52 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D9065D1F725B8E7BEC81504263ED7F3 /* Pods-GuessWutTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD30DDB53A1BCF1CD878C05D56381CC9 /* Pods-GuessWutTests-dummy.m */; };
-		8127F8312AFDD4965B46D0AAC6BC756E /* Pods-GuessWut-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 625E5419AD1B24B90EB7E604AC6A4E87 /* Pods-GuessWut-dummy.m */; };
-		CB817848E6CD962178FCD11D5AED385C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		8127F8312AFDD4965B46D0AAC6BC756E /* Pods-GuessWut-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2FEB19293F744E9A79F83AEF12DE26 /* Pods-GuessWut-dummy.m */; };
 		FEAD1FEC309DDC075896700C5EB660D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08F600A2749853BFDB5C521FDA247FBC /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
+		0D46A35389C3CA9FB18F9A9459F5BF11 /* Pods-GuessWut-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GuessWut-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1683EC89665A9D63453AE28356FA98DA /* FIRMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRMessaging.h; path = Sources/FIRMessaging.h; sourceTree = "<group>"; };
 		1C0B12A860104FA9B148978127550144 /* GoogleIPhoneUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleIPhoneUtilities.framework; path = Frameworks/GoogleIPhoneUtilities.framework; sourceTree = "<group>"; };
 		1C7DF32FE5037047D32DF4EAC68C531F /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		2A9EF5A3446DCEF4E295565D4F03AFBA /* Pods-GuessWut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GuessWut.release.xcconfig"; sourceTree = "<group>"; };
+		3711FEA8D17BE7723039721AFAC123FC /* Pods-GuessWut-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GuessWut-frameworks.sh"; sourceTree = "<group>"; };
 		39B5CAD202D89977BE20DEACCC365B3A /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Analytics/Sources/Firebase.h; sourceTree = "<group>"; };
-		4045B912251CC6E5A15B1915F86A6A8A /* Pods-GuessWutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GuessWutTests.release.xcconfig"; sourceTree = "<group>"; };
-		5E02306BD3D71316CC1C9EFF8CCD63FC /* libPods-GuessWutTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuessWutTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		625E5419AD1B24B90EB7E604AC6A4E87 /* Pods-GuessWut-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GuessWut-dummy.m"; sourceTree = "<group>"; };
-		6B78F314707738C6CAC889E4F0ABDD23 /* Pods-GuessWutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GuessWutTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6CAB568B9C19909640D3BD576413FF24 /* Pods-GuessWutTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GuessWutTests-resources.sh"; sourceTree = "<group>"; };
-		9083512902C0A5D52608FA85FAE139EA /* Pods-GuessWutTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GuessWutTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		659F3E0E25B28FA39D682DAF948AAF56 /* Pods-GuessWut-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GuessWut-acknowledgements.plist"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E764AABB67C6BFA070DB46522489D89 /* Pods-GuessWut-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GuessWut-acknowledgements.plist"; sourceTree = "<group>"; };
 		AFA5AA84CC4353568A830AB266789B20 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		AFCADD8B18845718C7615B6F40A62179 /* Pods-GuessWut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GuessWut.release.xcconfig"; sourceTree = "<group>"; };
-		B222A4755B77513B12A68366E31AB606 /* Pods-GuessWut-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GuessWut-acknowledgements.markdown"; sourceTree = "<group>"; };
-		BB6C8A30CF8FBB4D6261E07305BB5613 /* libPods-GuessWut.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuessWut.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3B5DC53BB7F695D4BB6CF3C5C6B2DA8 /* Pods-GuessWut-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GuessWut-resources.sh"; sourceTree = "<group>"; };
+		BE89AFCB6202B2B9295E5B42F8F5B3D8 /* Pods-GuessWut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GuessWut.debug.xcconfig"; sourceTree = "<group>"; };
 		C00440DD8BE0E675A1BC2A73C025F628 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		C457E07548CB47ED293CEBF06A4C55A5 /* Pods-GuessWut-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GuessWut-frameworks.sh"; sourceTree = "<group>"; };
-		C9007121E7B38798E0AAF7FFD872AD75 /* Pods-GuessWutTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GuessWutTests-frameworks.sh"; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E7B855BD22A108E3251FA5394343A9C2 /* Pods-GuessWutTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GuessWutTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		DEC8B9FEAC46D21E49D036C8CC86BC6A /* libPods-GuessWut.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuessWut.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF2FEB19293F744E9A79F83AEF12DE26 /* Pods-GuessWut-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GuessWut-dummy.m"; sourceTree = "<group>"; };
 		E8C52BDFC96A217B7906E8A6AE7268A7 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
 		E9D13747CB38FF555B779B39ABB1B67F /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Frameworks/frameworks/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		EE0041647B127A96A9B2954A0051EE26 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
-		F483CE795AE3DC5E6D14154EB6534BFF /* Pods-GuessWut-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GuessWut-resources.sh"; sourceTree = "<group>"; };
-		F83AB2171A10244EDF6246279B9CC9DF /* Pods-GuessWut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GuessWut.debug.xcconfig"; sourceTree = "<group>"; };
-		FD30DDB53A1BCF1CD878C05D56381CC9 /* Pods-GuessWutTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GuessWutTests-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		06E3B63F3D154C9FAE35F2A3EF6965BF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB817848E6CD962178FCD11D5AED385C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		34022A6907A9CC45B9230AF9F3078A55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,36 +60,6 @@
 				1C7DF32FE5037047D32DF4EAC68C531F /* GoogleSymbolUtilities.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1A7266C9E69857203AA966A48DA94AA3 /* Pods-GuessWutTests */ = {
-			isa = PBXGroup;
-			children = (
-				9083512902C0A5D52608FA85FAE139EA /* Pods-GuessWutTests-acknowledgements.markdown */,
-				E7B855BD22A108E3251FA5394343A9C2 /* Pods-GuessWutTests-acknowledgements.plist */,
-				FD30DDB53A1BCF1CD878C05D56381CC9 /* Pods-GuessWutTests-dummy.m */,
-				C9007121E7B38798E0AAF7FFD872AD75 /* Pods-GuessWutTests-frameworks.sh */,
-				6CAB568B9C19909640D3BD576413FF24 /* Pods-GuessWutTests-resources.sh */,
-				6B78F314707738C6CAC889E4F0ABDD23 /* Pods-GuessWutTests.debug.xcconfig */,
-				4045B912251CC6E5A15B1915F86A6A8A /* Pods-GuessWutTests.release.xcconfig */,
-			);
-			name = "Pods-GuessWutTests";
-			path = "Target Support Files/Pods-GuessWutTests";
-			sourceTree = "<group>";
-		};
-		1DE9C18D871396F936FD42AE5F29B3AE /* Pods-GuessWut */ = {
-			isa = PBXGroup;
-			children = (
-				B222A4755B77513B12A68366E31AB606 /* Pods-GuessWut-acknowledgements.markdown */,
-				9E764AABB67C6BFA070DB46522489D89 /* Pods-GuessWut-acknowledgements.plist */,
-				625E5419AD1B24B90EB7E604AC6A4E87 /* Pods-GuessWut-dummy.m */,
-				C457E07548CB47ED293CEBF06A4C55A5 /* Pods-GuessWut-frameworks.sh */,
-				F483CE795AE3DC5E6D14154EB6534BFF /* Pods-GuessWut-resources.sh */,
-				F83AB2171A10244EDF6246279B9CC9DF /* Pods-GuessWut.debug.xcconfig */,
-				AFCADD8B18845718C7615B6F40A62179 /* Pods-GuessWut.release.xcconfig */,
-			);
-			name = "Pods-GuessWut";
-			path = "Target Support Files/Pods-GuessWut";
 			sourceTree = "<group>";
 		};
 		2220FBFFD5BD1E73317406C099B775A7 /* Frameworks */ = {
@@ -220,8 +172,8 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				4D295DDD3DF41C4E15F489B6BD260EA2 /* Pods */,
-				D5ED7E7AEF3ED8EF1A25D752DE1FE395 /* Products */,
-				C2D3E0508356DA09A34111AE210C2773 /* Targets Support Files */,
+				C54E1784BB5277EEE3D48F468683E1CC /* Products */,
+				AD64AA55F5F5ACCB79EA06FBF95C581E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,6 +193,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AD64AA55F5F5ACCB79EA06FBF95C581E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF5B516F6EFF957FCFE14B8E5D724507 /* Pods-GuessWut */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
 		ADE0FE92B9C3819605C1D88E46CD24E6 /* GoogleSymbolUtilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,13 +217,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C2D3E0508356DA09A34111AE210C2773 /* Targets Support Files */ = {
+		C54E1784BB5277EEE3D48F468683E1CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1DE9C18D871396F936FD42AE5F29B3AE /* Pods-GuessWut */,
-				1A7266C9E69857203AA966A48DA94AA3 /* Pods-GuessWutTests */,
+				DEC8B9FEAC46D21E49D036C8CC86BC6A /* libPods-GuessWut.a */,
 			);
-			name = "Targets Support Files";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CB68482F8EA8DEA7860319BD302AF055 /* FirebaseMessaging */ = {
@@ -275,13 +234,19 @@
 			path = FirebaseMessaging;
 			sourceTree = "<group>";
 		};
-		D5ED7E7AEF3ED8EF1A25D752DE1FE395 /* Products */ = {
+		DF5B516F6EFF957FCFE14B8E5D724507 /* Pods-GuessWut */ = {
 			isa = PBXGroup;
 			children = (
-				BB6C8A30CF8FBB4D6261E07305BB5613 /* libPods-GuessWut.a */,
-				5E02306BD3D71316CC1C9EFF8CCD63FC /* libPods-GuessWutTests.a */,
+				0D46A35389C3CA9FB18F9A9459F5BF11 /* Pods-GuessWut-acknowledgements.markdown */,
+				659F3E0E25B28FA39D682DAF948AAF56 /* Pods-GuessWut-acknowledgements.plist */,
+				DF2FEB19293F744E9A79F83AEF12DE26 /* Pods-GuessWut-dummy.m */,
+				3711FEA8D17BE7723039721AFAC123FC /* Pods-GuessWut-frameworks.sh */,
+				B3B5DC53BB7F695D4BB6CF3C5C6B2DA8 /* Pods-GuessWut-resources.sh */,
+				BE89AFCB6202B2B9295E5B42F8F5B3D8 /* Pods-GuessWut.debug.xcconfig */,
+				2A9EF5A3446DCEF4E295565D4F03AFBA /* Pods-GuessWut.release.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-GuessWut";
+			path = "Target Support Files/Pods-GuessWut";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,23 +265,7 @@
 			);
 			name = "Pods-GuessWut";
 			productName = "Pods-GuessWut";
-			productReference = BB6C8A30CF8FBB4D6261E07305BB5613 /* libPods-GuessWut.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		DE458CCDF4E758A3ACC72815E1CD9B76 /* Pods-GuessWutTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E2AF645CD2AD0F677EA81A5113AC5592 /* Build configuration list for PBXNativeTarget "Pods-GuessWutTests" */;
-			buildPhases = (
-				C24784331D00647A5C39083647AA5B9C /* Sources */,
-				06E3B63F3D154C9FAE35F2A3EF6965BF /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-GuessWutTests";
-			productName = "Pods-GuessWutTests";
-			productReference = 5E02306BD3D71316CC1C9EFF8CCD63FC /* libPods-GuessWutTests.a */;
+			productReference = DEC8B9FEAC46D21E49D036C8CC86BC6A /* libPods-GuessWut.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -336,25 +285,16 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = D5ED7E7AEF3ED8EF1A25D752DE1FE395 /* Products */;
+			productRefGroup = C54E1784BB5277EEE3D48F468683E1CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				6CE7F025B09BBF982EEF8409A56731F0 /* Pods-GuessWut */,
-				DE458CCDF4E758A3ACC72815E1CD9B76 /* Pods-GuessWutTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C24784331D00647A5C39083647AA5B9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3D9065D1F725B8E7BEC81504263ED7F3 /* Pods-GuessWutTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F2627D8DF8A980D55283F351589D2C35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,30 +306,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0036A626388A21AB2B913A94F1E73F9D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B78F314707738C6CAC889E4F0ABDD23 /* Pods-GuessWutTests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 		317B46F9BEAAEECF1BB6117E382A5500 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFCADD8B18845718C7615B6F40A62179 /* Pods-GuessWut.release.xcconfig */;
+			baseConfigurationReference = 2A9EF5A3446DCEF4E295565D4F03AFBA /* Pods-GuessWut.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -450,27 +369,6 @@
 			};
 			name = Debug;
 		};
-		879F8E7C5EDDAAF7332705F6A3337881 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4045B912251CC6E5A15B1915F86A6A8A /* Pods-GuessWutTests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -511,7 +409,7 @@
 		};
 		B87DB3E94928B5533F72E6A40682DA44 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F83AB2171A10244EDF6246279B9CC9DF /* Pods-GuessWut.debug.xcconfig */;
+			baseConfigurationReference = BE89AFCB6202B2B9295E5B42F8F5B3D8 /* Pods-GuessWut.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -547,15 +445,6 @@
 			buildConfigurations = (
 				B87DB3E94928B5533F72E6A40682DA44 /* Debug */,
 				317B46F9BEAAEECF1BB6117E382A5500 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E2AF645CD2AD0F677EA81A5113AC5592 /* Build configuration list for PBXNativeTarget "Pods-GuessWutTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0036A626388A21AB2B913A94F1E73F9D /* Debug */,
-				879F8E7C5EDDAAF7332705F6A3337881 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

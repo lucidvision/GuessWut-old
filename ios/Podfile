@@ -8,10 +8,4 @@ target 'GuessWut' do
   # Pods for GuessWut
   pod 'Firebase', '= 3.6.0'
   pod 'Firebase/Messaging'
-
-  target 'GuessWutTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
