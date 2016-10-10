@@ -95,8 +95,8 @@ export function saveGameFanout (puids) {
         friend.guess = ''
         friend.score = 0
         player[friend.uid] = friend
-        return player
       }
+      return player
     }, {})
     const game = {
       players,

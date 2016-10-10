@@ -6,7 +6,7 @@ import { colors, fontSizes } from '~/styles'
 export default function Splash (props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Coder</Text>
+      <Text style={styles.title}>Code</Text>
       <View style={styles.loginContainer}>
         <TextInput
           style={styles.input}
