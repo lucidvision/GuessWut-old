@@ -1,10 +1,10 @@
-import { authWithEmailandPassword, signupWithEmailandPassword, getAccessToken,
-  authWithToken, logout } from '~/api/auth'
+import { authWithEmailandPassword, signupWithEmailandPassword, logout } from '~/api/auth'
 import { updateUser } from '~/api/users'
 import { fetchAndSetUserListener } from '~/redux/modules/users'
 import { fetchAndSetFriendsListener } from '~/redux/modules/friends'
 import { fetchAndSetRequestsListener } from '~/redux/modules/addFriends'
 import { fetchAndSetHostingListener } from '~/redux/modules/games'
+import { showFlashNotification } from '~/redux/modules/flashNotification'
 
 const AUTHENTICATING = 'AUTHENTICATING'
 const NOT_AUTHED = 'NOT_AUTHED'
@@ -42,17 +42,15 @@ export function handleAuthWithFirebase (email, password) {
     return authWithEmailandPassword(email, password)
       .catch(() => {
         signupWithEmailandPassword(email, password)
-          .catch((error) => console.warn('Error in handleAuthWithFirebase: ', error))
+          .catch(error => {
+            let message = 'Error authenticating'
+            if (error) {
+              message = error.message
+            }
+            dispatch(showFlashNotification({text: message}))
+            dispatch(notAuthed())
+          })
       })
-  }
-}
-
-export function handleFacebookAuthWithFirebase () {
-  return function (dispatch, getState) {
-    dispatch(authenticating())
-    return getAccessToken()
-      .then(({accessToken}) => authWithToken(accessToken))
-      .catch((error) => console.warn('Error in handleAuthWithFirebase: ', error))
   }
 }
 

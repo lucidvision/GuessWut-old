@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { Splash } from '~/components'
 import { connect } from 'react-redux'
-import { handleAuthWithFirebase, handleFacebookAuthWithFirebase } from '~/redux/modules/authentication'
+import { handleAuthWithFirebase } from '~/redux/modules/authentication'
 
 class SplashContainer extends Component {
   static propTypes = {
@@ -15,15 +15,6 @@ class SplashContainer extends Component {
     const { email, password } = this.state
     this.props.dispatch(handleAuthWithFirebase(email, password))
   }
-  handleLoginFinished = (error, result) => {
-    if (error) {
-      console.warn('Error in handleLoginFinished: ', error)
-    } else if (result.isCancelled === true) {
-      console.log('Auth Cancelled')
-    } else {
-      this.props.dispatch(handleFacebookAuthWithFirebase())
-    }
-  }
   render () {
     return (
       <Splash
@@ -31,8 +22,7 @@ class SplashContainer extends Component {
         password={this.state.password}
         changeEmail={email => this.setState({email})}
         changePassword={password => this.setState({password})}
-        onLoginPressed={this.handleLoginPressed}
-        onLoginFinished={this.handleLoginFinished} />
+        onLoginPressed={this.handleLoginPressed} />
     )
   }
 }

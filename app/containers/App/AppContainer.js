@@ -47,17 +47,13 @@ class AppContainer extends Component {
       if (!user) {
         this.props.dispatch(notAuthed())
       } else {
-        fetchUser(user.uid).then((userInfo) => {
+        const {uid, email} = user
+        fetchUser(uid).then((userInfo) => {
           if (_.isEmpty(userInfo)) {
-            if (_.isEmpty(user.displayName)) {
-              const {uid, email} = user
-              this.setState({
-                user: {uid, email},
-                showModal: true
-              })
-            } else {
-              this.props.dispatch(onAuthChange(user))
-            }
+            this.setState({
+              user: {uid, email},
+              showModal: true
+            })
           } else {
             this.props.dispatch(onAuthChange(userInfo))
           }
@@ -77,12 +73,14 @@ class AppContainer extends Component {
       const user = this.state.user
       user.displayName = this.state.name
       this.props.dispatch(onAuthChange(user))
-      this.setState({
-        name: '',
-        user: {},
-        showModal: false
-      })
+    } else {
+      this.props.dispatch(notAuthed())
     }
+    this.setState({
+      name: '',
+      user: {},
+      showModal: false
+    })
   }
   render () {
     return (

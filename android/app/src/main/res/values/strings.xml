@@ -1,6 +1,3 @@
 <resources>
-
-
-    <string name="app_name">GuessWut</string>
-    <string name="facebook_app_id">532929310237010</string>
+  <string name="app_name">GuessWut</string>
 </resources>

@@ -2,7 +2,6 @@
 
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "RNFIRMessaging.h"
 
 @implementation AppDelegate
@@ -47,20 +46,6 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler{
   [[NSNotificationCenter defaultCenter] postNotificationName:FCMNotificationReceived object:self userInfo:userInfo];
   completionHandler(UIBackgroundFetchResultNoData);
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-  [FBSDKAppEvents activateApp];
-}
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-  return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                         openURL:url
-                                               sourceApplication:sourceApplication
-                                                      annotation:annotation];
 }
 
 @end

@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
-import { LoginButton } from 'react-native-fbsdk'
 import { colors, fontSizes } from '~/styles'
 
 export default function Splash (props) {
@@ -37,15 +36,6 @@ export default function Splash (props) {
             <Text style={styles.loginText}>Login</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.fbLoginContainer}>
-        <LoginButton
-          style={styles.fbLoginButton}
-          readPermissions={['email']}
-          onLoginFinished={props.onLoginFinished} />
-        <Text style={styles.assuranceText}>
-          Don't worry. We don't post anything to Facebook.
-        </Text>
-      </View>
     </View>
   )
 }
@@ -55,15 +45,14 @@ Splash.propTypes = {
   password: PropTypes.string.isRequired,
   changeEmail: PropTypes.func.isRequired,
   changePassword: PropTypes.func.isRequired,
-  onLoginPressed: PropTypes.func.isRequired,
-  onLoginFinished: PropTypes.func.isRequired
+  onLoginPressed: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     paddingTop: 50,
     paddingBottom: 40
