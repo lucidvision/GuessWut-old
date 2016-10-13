@@ -1,6 +1,7 @@
 import { ref } from '~/config/constants'
 import { searchUsersByEmail } from '~/api/users'
 import { addRequest, removeRequest, addFriend } from '~/api/friends'
+import { sendNotification } from '~/api/server'
 
 const UPDATE_SEARCH_TEXT = 'UPDATE_SEARCH_TEXT'
 const UPDATE_USER_FOUND = 'UPDATE_USER_FOUND'
@@ -66,11 +67,15 @@ export function fetchAndSetRequestsListener (uid) {
 export function sendRequest () {
   return function (dispatch, getState) {
     const { authentication, addFriends } = getState()
-    const friendId = Object.keys(addFriends.userFound)[0]
-    return addRequest(authentication.authedId, friendId)
+    const fuid = Object.keys(addFriends.userFound)[0]
+    const token = addFriends.userFound[fuid].token
+    return addRequest(authentication.authedId, fuid)
       .then(() => {
-        dispatch(updateSearchText(''))
-        dispatch(updateUserFound({}))
+        sendNotification([token], 'Friend Request', 'You have received a Friend Request!')
+          .then(response => {
+            dispatch(updateSearchText(''))
+            dispatch(updateUserFound({}))
+          })
       })
   }
 }
