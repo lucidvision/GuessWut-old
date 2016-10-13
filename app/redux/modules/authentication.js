@@ -54,9 +54,9 @@ export function handleAuthWithFirebase (email, password) {
   }
 }
 
-export function onAuthChange ({uid, email, displayName}) {
+export function onAuthChange (user) {
   return function (dispatch) {
-    const user = {uid, email, displayName}
+    const {uid} = user
     updateUser(user)
     .then(() => dispatch(isAuthed(uid)))
     .then(() => Promise.all([

@@ -27,10 +27,11 @@ class AppContainer extends Component {
   }
   componentDidMount () {
     FCM.requestPermissions()
+    let nToken
     FCM.getFCMToken().then(token => {
-      console.log('get: ' + token)
+      nToken = token
     })
-    this.notificationUnsubscribe = FCM.on('notification', (notif) => {
+    this.notificationUnsubscribe = FCM.on('notification', notif => {
       Alert.alert('Notification', 'It worked!')
       console.log(notif)
       if (notif.opened_from_tray) {
@@ -40,8 +41,8 @@ class AppContainer extends Component {
         console.log('It worked!')
       }
     })
-    this.refreshUnsubscribe = FCM.on('refreshToken', (token) => {
-      console.log(token)
+    this.refreshUnsubscribe = FCM.on('refreshToken', token => {
+      nToken = token
     })
     firebaseAuth.onAuthStateChanged((user) => {
       if (!user) {
@@ -51,11 +52,11 @@ class AppContainer extends Component {
         fetchUser(uid).then((userInfo) => {
           if (_.isEmpty(userInfo)) {
             this.setState({
-              user: {uid, email},
+              user: {uid, email, nToken},
               showModal: true
             })
           } else {
-            this.props.dispatch(onAuthChange(userInfo))
+            this.props.dispatch(onAuthChange({nToken, ...userInfo}))
           }
         })
       }
