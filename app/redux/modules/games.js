@@ -1,6 +1,7 @@
 import { ref } from '~/config/constants'
 import { createGame, saveToGamesHosting, saveToGamesPlaying, saveGuessToGames,
   completeGame, removeFromGamesHosting, saveToGamesCompleted, removeFromGamesPlaying } from '~/api/games'
+import { sendNotification } from '~/api/server'
 import _ from 'lodash'
 
 const UPDATE_CODE_TEXT = 'UPDATE_CODE_TEXT'
@@ -98,6 +99,7 @@ export function saveGameFanout (puids) {
       }
       return player
     }, {})
+    const tokens = _.map(Object.values(players), 'token')
     const game = {
       players,
       message,
@@ -110,6 +112,7 @@ export function saveGameFanout (puids) {
     return Promise.all([
       gamePromise,
       saveToGamesHosting(gid, authentication.authedId),
+      sendNotification(tokens, 'Game Invite!', 'You are now playing in a game!'),
       puids.forEach((puid) => saveToGamesPlaying(gid, puid))
     ])
   }
@@ -117,20 +120,27 @@ export function saveGameFanout (puids) {
 
 export function saveGuess (gid, guess) {
   return function (dispatch, getState) {
-    const { authentication, games } = getState()
+    const { authentication, games, friends } = getState()
+    const huid = games.game.huid
+    const token = _.find(friends.friends, ['uid', huid]).token
     const message = games.game.message
     const score = longestCommonSubstring(message.toLowerCase().trim(), guess.toLowerCase().trim())
-    return saveGuessToGames(gid, authentication.authedId, guess, score)
+    return Promise.all([
+      saveGuessToGames(gid, authentication.authedId, guess, score),
+      sendNotification([token], 'Player Guessed', 'A player has made a guess!')
+    ])
   }
 }
 
 export function releaseScoreAndCompleteGame (game) {
   return function (dispatch, getState) {
-    const { authentication } = getState()
+    const { authentication, games } = getState()
+    const tokens = _.map(Object.values(games.game.players), 'token')
     return Promise.all([
       completeGame(game.gid),
       removeFromGamesHosting(game.gid, authentication.authedId),
-      saveToGamesCompleted(game.gid, authentication.authedId)
+      saveToGamesCompleted(game.gid, authentication.authedId),
+      sendNotification(tokens, 'Game Results', 'A host has released the results!')
     ])
   }
 }
