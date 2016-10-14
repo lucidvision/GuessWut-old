@@ -71,7 +71,7 @@ export function sendRequest () {
     const token = addFriends.userFound[fuid].token
     return addRequest(authentication.authedId, fuid)
       .then(() => {
-        sendNotification([token], 'Friend Request', 'You have received a Friend Request!')
+        sendNotification([token], 'Friend Request Received', 'You have received a Friend Request!')
           .then(response => {
             dispatch(updateSearchText(''))
             dispatch(updateUserFound({}))
@@ -80,10 +80,11 @@ export function sendRequest () {
   }
 }
 
-export function confirmRequest (fuid) {
+export function confirmRequest (fuid, token) {
   return function (dispatch, getState) {
     const { authentication } = getState()
     return Promise.all([
+      sendNotification([token], 'Friend Confirmed', 'Your friend confirmed your request!'),
       addFriend(authentication.authedId, fuid),
       addFriend(fuid, authentication.authedId),
       removeRequest(authentication.authedId, fuid)

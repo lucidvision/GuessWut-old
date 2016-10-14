@@ -3,12 +3,13 @@ import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { colors, fontSizes } from '~/styles'
 
 export default function Request (props) {
+  const { displayName } = props.friend
   return (
     <View style={styles.container}>
-      <Text style={styles.nameText}>{props.name}</Text>
+      <Text style={styles.nameText}>{displayName}</Text>
       <TouchableOpacity
         style={styles.confirmButton}
-        onPress={() => props.onConfirmPressed(props.fuid)}>
+        onPress={() => props.onConfirmPressed(props.friend)}>
         <Text style={styles.confirmButtonText}>Confirm</Text>
       </TouchableOpacity>
     </View>
@@ -16,7 +17,7 @@ export default function Request (props) {
 }
 
 Request.propTypes = {
-  name: PropTypes.string.isRequired,
+  friend: PropTypes.object.isRequired,
   onConfirmPressed: PropTypes.func.isRequired
 }
 

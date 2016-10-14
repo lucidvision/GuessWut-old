@@ -53,8 +53,8 @@ class AddFriendsContainer extends Component {
       .then(() => this.props.dispatch(showFlashNotification({text: 'Friend Request Sent'})))
       .catch(() => this.props.dispatch(showFlashNotification({text: 'Error with Friend Request'})))
   }
-  handleConfirmPressed = (fuid) => {
-    this.props.dispatch(confirmRequest(fuid))
+  handleConfirmPressed = ({uid, token}) => {
+    this.props.dispatch(confirmRequest(uid, token))
       .then(() => {
         this.props.dispatch(showFlashNotification({text: 'Friend Confirmed'}))
         this.props.dispatch(updateSearchText(''))
@@ -65,11 +65,10 @@ class AddFriendsContainer extends Component {
   renderHeader = () => {
     return <Header text={'Friend Requests'}/>
   }
-  renderRow = ({displayName, uid}) => {
+  renderRow = (friend) => {
     return (
       <Request
-        name={displayName}
-        fuid={uid}
+        friend={friend}
         onConfirmPressed={this.handleConfirmPressed} />
     )
   }

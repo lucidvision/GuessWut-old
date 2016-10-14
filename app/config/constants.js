@@ -16,7 +16,7 @@ export {
   firebaseAuth
 }
 
-export const serverURL = 'http://localhost:3000/'
+export const serverURL = 'http://192.168.0.11:3000/'
 // export const serverURL = 'http://heroku.com'
 
 export const minimumWordLength = 5
