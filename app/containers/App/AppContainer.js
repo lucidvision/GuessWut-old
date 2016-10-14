@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Alert } from 'react-native'
+import { View, Alert, TouchableWithoutFeedback } from 'react-native'
 import FCM from 'react-native-fcm'
 import { connect } from 'react-redux'
 import { AppNavigator } from '~/containers'
@@ -9,6 +9,8 @@ import { fetchUser } from '~/api/users'
 import { notAuthed, onAuthChange } from '~/redux/modules/authentication'
 import { hideFlashNotification } from '~/redux/modules/flashNotification'
 import _ from 'lodash'
+
+const dismissKeyboard = require('dismissKeyboard')
 
 class AppContainer extends Component {
   static propTypes = {
@@ -32,12 +34,8 @@ class AppContainer extends Component {
       token = ntoken
     })
     this.notificationUnsubscribe = FCM.on('notification', notif => {
-      Alert.alert('Notification', 'It worked!')
-      if (notif.opened_from_tray) {
-        console.log('opened from tray')
-      }
-      if (notif.notification) {
-        console.log('It worked!')
+      if (notif) {
+        Alert.alert(notif.title, notif.body)
       }
     })
     this.refreshUnsubscribe = FCM.on('refreshToken', ntoken => {
@@ -84,25 +82,27 @@ class AppContainer extends Component {
   }
   render () {
     return (
-      <View style={{flex: 1}}>
-        <InputModal
-          prompt={'Please enter your name'}
-          placeholder={'Your Name'}
-          value={this.state.name}
-          changeText={name => this.setState({name})}
-          onButtonPressed={this.handleModalButtonPressed}
-          modalVisible={this.state.showModal} />
-        {this.props.isAuthenticating === true
-          ? <PreSplash />
-          : <AppNavigator isAuthed={this.props.isAuthed} />}
-        {this.props.showFlashNotification === true
-          ? <FlashNotification
-              permanent={this.props.flashNotificationIsPermanent}
-              location={this.props.flashNotificationLocation}
-              text={this.props.flashNotificationText}
-              onHideNotification={this.handleHideNotification}/>
-          : null}
-      </View>
+      <TouchableWithoutFeedback onPress={() => dismissKeyboard()}>
+        <View style={{flex: 1}}>
+          <InputModal
+            prompt={'Please enter your name'}
+            placeholder={'Your Name'}
+            value={this.state.name}
+            changeText={name => this.setState({name})}
+            onButtonPressed={this.handleModalButtonPressed}
+            modalVisible={this.state.showModal} />
+          {this.props.isAuthenticating === true
+            ? <PreSplash />
+            : <AppNavigator isAuthed={this.props.isAuthed} />}
+          {this.props.showFlashNotification === true
+            ? <FlashNotification
+                permanent={this.props.flashNotificationIsPermanent}
+                location={this.props.flashNotificationLocation}
+                text={this.props.flashNotificationText}
+                onHideNotification={this.handleHideNotification}/>
+            : null}
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
 }
