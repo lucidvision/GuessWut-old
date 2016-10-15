@@ -50,17 +50,17 @@ class AddFriendsContainer extends Component {
   }
   handleAddPressed = () => {
     this.props.dispatch(sendRequest())
-      .then(() => this.props.dispatch(showFlashNotification({text: 'Friend Request Sent'})))
-      .catch(() => this.props.dispatch(showFlashNotification({text: 'Error with Friend Request'})))
+      .then(() => this.props.dispatch(showFlashNotification({text: 'Friend request sent!'})))
+      .catch(() => this.props.dispatch(showFlashNotification({text: 'Error with friend request!'})))
   }
   handleConfirmPressed = ({uid, token}) => {
     this.props.dispatch(confirmRequest(uid, token))
       .then(() => {
-        this.props.dispatch(showFlashNotification({text: 'Friend Confirmed'}))
+        this.props.dispatch(showFlashNotification({text: 'Friend confirmed!'}))
         this.props.dispatch(updateSearchText(''))
         this.props.dispatch(updateUserFound({}))
       })
-      .catch(() => this.props.dispatch(showFlashNotification({text: 'Error Confirming Friend'})))
+      .catch(() => this.props.dispatch(showFlashNotification({text: 'Error confirming friend!'})))
   }
   renderHeader = () => {
     return <Header text={'Friend Requests'}/>

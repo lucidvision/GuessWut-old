@@ -34,8 +34,9 @@ class AppContainer extends Component {
       token = ntoken
     })
     this.notificationUnsubscribe = FCM.on('notification', notif => {
+      const {title, body} = notif.notification
       if (notif) {
-        Alert.alert(notif.title, notif.body)
+        Alert.alert(title, body)
       }
     })
     this.refreshUnsubscribe = FCM.on('refreshToken', ntoken => {

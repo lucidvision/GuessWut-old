@@ -10,7 +10,7 @@ export default function Host (props) {
         title='Host Game'
         leftButton={<Button text={'Close'} onPress={props.onBack}/>}
         rightButton={props.authedId === props.game.huid
-                      ? <Button text={'Score'} onPress={props.onScorePressed} />
+                      ? <Button text={'Send'} onPress={props.onScorePressed} />
                       : null} />
       <View style={styles.gameContainer}>
         <View>

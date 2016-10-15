@@ -3,6 +3,7 @@ import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { Play } from '~/components'
 import { saveGuess } from '~/redux/modules/games'
+import { showFlashNotification } from '~/redux/modules/flashNotification'
 import { minimumWordLength, maximumWordLength } from '~/config/constants'
 
 class PlayContainer extends Component {
@@ -27,6 +28,8 @@ class PlayContainer extends Component {
       )
     } else {
       this.props.dispatch(saveGuess(this.props.game.gid, this.state.guess))
+        .then(() => { this.props.dispatch(showFlashNotification({text: 'Guess sent!'})) })
+        .catch(() => { this.props.dispatch(showFlashNotification({text: 'Erroring sending guess!'})) })
       this.props.navigator.pop()
     }
   }

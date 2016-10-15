@@ -56,10 +56,9 @@ class PlayersContainer extends Component {
   }
   handleSendButtonPressed = () => {
     this.props.dispatch(saveGameFanout(this.state.selected))
-      .then(() => {
-        this.props.navigator.popToTop()
-        this.props.dispatch(showFlashNotification({text: 'Game sent!'}))
-      })
+      .then(() => { this.props.dispatch(showFlashNotification({text: 'Game sent!'})) })
+      .catch(() => { this.props.dispatch(showFlashNotification({text: 'Error sending game!'})) })
+    this.props.navigator.popToTop()
   }
   renderRow = ({displayName, selected, uid}) => {
     return (

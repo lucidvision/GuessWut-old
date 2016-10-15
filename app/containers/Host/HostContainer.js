@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Host, Guess } from '~/components'
 import Header from '~/components/Guesses/Header'
 import { releaseScoreAndCompleteGame, completeGamePlaying } from '~/redux/modules/games'
+import { showFlashNotification } from '~/redux/modules/flashNotification'
 
 class HostContainer extends Component {
   static propTypes = {
@@ -30,6 +31,8 @@ class HostContainer extends Component {
   }
   handleScorePressed = () => {
     this.props.dispatch(releaseScoreAndCompleteGame(this.props.game))
+      .then(() => { this.props.dispatch(showFlashNotification({text: 'Sent results!'})) })
+      .catch(() => { this.props.dispatch(showFlashNotification({text: 'Error sending results!'})) })
     this.props.navigator.pop()
   }
   handleOnBack = () => {
@@ -37,6 +40,8 @@ class HostContainer extends Component {
       this.props.navigator.pop()
     } else {
       this.props.dispatch(completeGamePlaying(this.props.game))
+        .then(() => { this.props.dispatch(showFlashNotification({text: 'Game completed!'})) })
+        .catch(() => { this.props.dispatch(showFlashNotification({text: 'Error completing game!'})) })
       this.props.navigator.pop()
     }
   }
