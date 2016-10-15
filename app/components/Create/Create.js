@@ -1,36 +1,43 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TextInput,
-  TouchableOpacity, KeyboardAvoidingView } from 'react-native'
+import { View, StyleSheet, Text, TextInput, TouchableOpacity,
+  TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native'
 import { AppNavbar, Button } from '~/components'
 import { colors, fontSizes } from '~/styles'
+
+const dismissKeyboard = require('dismissKeyboard')
 
 export default function Create (props) {
   return (
     <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
-      <AppNavbar
-        title='Create Game'
-        leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
-      <View style={styles.messageContainer}>
-        <View>
-          <Text style={styles.promptText}>Type in a message</Text>
-          <TextInput
-            multiline
-            autoCapitalize='none'
-            autoCorrect={false}
-            style={styles.messageInput}
-            onChangeText={(text) => props.changeMessage(text)}
-            value={props.message} />
+      <TouchableWithoutFeedback onPress={() => { dismissKeyboard() }}>
+        <View style={styles.innerContainer}>
+          <AppNavbar
+            title='Create Game'
+            leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
+          <View style={styles.messageContainer}>
+            <View>
+              <Text style={styles.promptText}>Type in a message</Text>
+              <TextInput
+                multiline
+                autoCapitalize='none'
+                autoCorrect={false}
+                style={styles.messageInput}
+                onChangeText={(text) => props.changeMessage(text)}
+                value={props.message} />
+            </View>
+            <View>
+              <Text style={styles.promptText}>Code</Text>
+              <Text style={styles.codeText}>{props.code}</Text>
+            </View>
+            <TouchableOpacity
+              style={props.message.length > 0 ? styles.createButton : styles.disabledButton}
+              disabled={!props.message.length > 0}
+              onPress={props.onCreateButtonPressed}>
+              <Text style={styles.createButtonText}>Create game</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View>
-          <Text style={styles.promptText}>Code</Text>
-          <Text style={styles.codeText}>{props.code}</Text>
-        </View>
-        <TouchableOpacity
-          style={props.message.length > 0 ? styles.createButton : styles.disabledButton}
-          onPress={props.onCreateButtonPressed}>
-          <Text style={styles.createButtonText}>Create game</Text>
-        </TouchableOpacity>
-      </View>
+      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   )
 }
@@ -47,6 +54,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white
+  },
+  innerContainer: {
+    flex: 1
   },
   messageContainer: {
     flex: 1,

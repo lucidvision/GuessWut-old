@@ -1,27 +1,32 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Text, TextInput, TouchableOpacity,
+  TouchableWithoutFeedback } from 'react-native'
 import { AppNavbar, Button } from '~/components'
 import { colors, fontSizes } from '~/styles'
 
+const dismissKeyboard = require('dismissKeyboard')
+
 export default function Settings (props) {
   return (
-    <View style={styles.container}>
-      <AppNavbar
-        title='Settings'
-        leftButton={<Button text={'Close'} onPress={props.onBack}/>}
-        rightButton={<Button text={'Save'} onPress={props.onSave}/>} />
-      <TextInput
-        style={styles.nameInput}
-        maxLength={30}
-        autoCapitalize={'none'}
-        autoCorrect={false}
-        onChangeText={(text) => props.changeName(text)}
-        value={props.name}
-        placeholder='Name' />
-      <TouchableOpacity onPress={props.onLogout} style={styles.logout}>
-        <Text style={styles.logoutText}>Logout</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableWithoutFeedback onPress={ () => { dismissKeyboard() } }>
+      <View style={styles.container}>
+        <AppNavbar
+          title='Settings'
+          leftButton={<Button text={'Close'} onPress={props.onBack}/>}
+          rightButton={<Button text={'Save'} onPress={props.onSave}/>} />
+        <TextInput
+          style={styles.nameInput}
+          maxLength={30}
+          autoCapitalize={'none'}
+          autoCorrect={false}
+          onChangeText={(text) => props.changeName(text)}
+          value={props.name}
+          placeholder='Name' />
+        <TouchableOpacity onPress={props.onLogout} style={styles.logout}>
+          <Text style={styles.logoutText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
+    </TouchableWithoutFeedback>
   )
 }
 

@@ -1,41 +1,47 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TextInput,
-  TouchableOpacity, KeyboardAvoidingView } from 'react-native'
+import { View, StyleSheet, Text, TextInput, TouchableOpacity,
+  TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native'
 import { colors, fontSizes } from '~/styles'
+
+const dismissKeyboard = require('dismissKeyboard')
 
 export default function Splash (props) {
   return (
     <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
-      <Text style={styles.title}>Code</Text>
-      <View style={styles.loginContainer}>
-        <TextInput
-          style={styles.input}
-          autoCapitalize='none'
-          autoCorrect={false}
-          maxLength={140}
-          keyboardType='email-address'
-          returnKeyType='next'
-          onSubmitEditing={() => this.password.focus()}
-          value={props.email}
-          onChangeText={(text) => props.changeEmail(text)}
-          placeholder={'Email Address'} />
-        <TextInput
-          style={styles.input}
-          ref={(el) => this.password = el}
-          autoCapitalize='none'
-          autoCorrect={false}
-          maxLength={140}
-          secureTextEntry
-          returnKeyType='next'
-          value={props.password}
-          onChangeText={(text) => props.changePassword(text)}
-          placeholder={'Password'} />
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={props.onLoginPressed}>
-            <Text style={styles.loginText}>Login</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableWithoutFeedback onPress={ () => { dismissKeyboard() } }>
+        <View style={styles.innerContainer}>
+          <Text style={styles.title}>Code</Text>
+          <View style={styles.loginContainer}>
+            <TextInput
+              style={styles.input}
+              autoCapitalize='none'
+              autoCorrect={false}
+              maxLength={140}
+              keyboardType='email-address'
+              returnKeyType='next'
+              onSubmitEditing={() => this.password.focus()}
+              value={props.email}
+              onChangeText={(text) => props.changeEmail(text)}
+              placeholder={'Email Address'} />
+            <TextInput
+              style={styles.input}
+              ref={(el) => this.password = el}
+              autoCapitalize='none'
+              autoCorrect={false}
+              maxLength={140}
+              secureTextEntry
+              returnKeyType='next'
+              value={props.password}
+              onChangeText={(text) => props.changePassword(text)}
+              placeholder={'Password'} />
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={props.onLoginPressed}>
+                <Text style={styles.loginText}>Login</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   )
 }
@@ -51,7 +57,10 @@ Splash.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.white
+  },
+  innerContainer: {
+    flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
     paddingTop: 50,

@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TextInput,
-  TouchableOpacity, ListView, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, Text, TextInput, TouchableOpacity,
+  TouchableWithoutFeedback, ListView, ActivityIndicator } from 'react-native'
 import { AppNavbar, Button } from '~/components'
 import { colors, fontSizes } from '~/styles'
+
+const dismissKeyboard = require('dismissKeyboard')
 
 export default function AddFriends (props) {
   function onUpdateSearchText (text) {
@@ -10,46 +12,48 @@ export default function AddFriends (props) {
     props.findFriend(text)
   }
   return (
-    <View style={styles.container}>
-      <AppNavbar
-        title='Add Friends'
-        leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
-      <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          maxLength={30}
-          autoCapitalize={'none'}
-          autoCorrect={false}
-          onChangeText={(text) => onUpdateSearchText(text)}
-          value={props.searchText}
-          placeholder='Search by email' />
+    <TouchableWithoutFeedback onPress={() => { dismissKeyboard() }}>
+      <View style={styles.container}>
+        <AppNavbar
+          title='Add Friends'
+          leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
+        <View style={styles.searchContainer}>
+          <TextInput
+            style={styles.searchInput}
+            maxLength={30}
+            autoCapitalize={'none'}
+            autoCorrect={false}
+            onChangeText={(text) => onUpdateSearchText(text)}
+            value={props.searchText}
+            placeholder='Search by email' />
+        </View>
+        {props.searchText.length > 0
+          ? <View style={styles.resultContainer}>
+              <Text style={styles.resultText}>{props.resultText}</Text>
+              {props.showResult
+                ? <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={props.onAddPressed}>
+                    <Text style={styles.addButtonText}>Add+</Text>
+                  </TouchableOpacity>
+                : null}
+            </View>
+          : null}
+        <View style={styles.listContainer}>
+          {props.listenerSet === false
+            ? <ActivityIndicator
+                size='small'
+                style={styles.activityIndicator}
+                color={colors.secondary} />
+            : props.requests.length > 0
+              ? <ListView
+                  renderHeader={props.renderHeader}
+                  renderRow={props.renderRow}
+                  dataSource={props.dataSource} />
+              : <Text style={styles.noRequestsText}>No Friend Requests</Text>}
+        </View>
       </View>
-      {props.searchText.length > 0
-        ? <View style={styles.resultContainer}>
-            <Text style={styles.resultText}>{props.resultText}</Text>
-            {props.showResult
-              ? <TouchableOpacity
-                  style={styles.addButton}
-                  onPress={props.onAddPressed}>
-                  <Text style={styles.addButtonText}>Add+</Text>
-                </TouchableOpacity>
-              : null}
-          </View>
-        : null}
-      <View style={styles.listContainer}>
-        {props.listenerSet === false
-          ? <ActivityIndicator
-              size='small'
-              style={styles.activityIndicator}
-              color={colors.secondary} />
-          : props.requests.length > 0
-            ? <ListView
-                renderHeader={props.renderHeader}
-                renderRow={props.renderRow}
-                dataSource={props.dataSource} />
-            : <Text style={styles.noRequestsText}>No Friend Requests</Text>}
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   )
 }
 

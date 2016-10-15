@@ -3,6 +3,7 @@ import { ListView, Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { Friends, Friend } from '~/components'
 import { fetchAndSetFriendsListener, endFriendship } from '~/redux/modules/friends'
+import { showFlashNotification } from '~/redux/modules/flashNotification'
 
 class FriendsContainer extends Component {
   static propTypes = {
@@ -39,7 +40,9 @@ class FriendsContainer extends Component {
       'Remove Friend',
       'Are you sure you want to remove this friend?',
       [
-        {text: 'Yes', onPress: () => this.props.dispatch(endFriendship(fuid))},
+        {text: 'Yes', onPress: () => this.props.dispatch(endFriendship(fuid))
+          .then(() => this.props.dispatch(showFlashNotification({text: 'Friend removed!'})))
+          .catch(() => this.props.dispatch(showFlashNotification({text: 'Error sending game!'})))},
         {text: 'Cancel', onPress: () => {}, style: 'cancel'}
       ]
     )
