@@ -89,7 +89,7 @@ export function fetchAndSetHostingListener () {
 export function saveGameFanout (puids) {
   return function (dispatch, getState) {
     const store = getState()
-    const { authentication, friends } = store
+    const { users, friends } = store
     const { message, code } = store.games
     const players = _.reduce(friends.friends, (player, friend) => {
       if (_.includes(puids, friend.uid)) {
@@ -105,13 +105,13 @@ export function saveGameFanout (puids) {
       message,
       code,
       completed: false,
-      huid: authentication.authedId,
+      host: users.user,
       timestamp: Date.now()
     }
     const { gid, gamePromise } = createGame(game)
     return Promise.all([
       gamePromise,
-      saveToGamesHosting(gid, authentication.authedId),
+      saveToGamesHosting(gid, users.user.uid),
       sendNotification(tokens, 'Game Invite!', 'You are now playing in a game!'),
       puids.forEach((puid) => saveToGamesPlaying(gid, puid))
     ])
@@ -121,8 +121,7 @@ export function saveGameFanout (puids) {
 export function saveGuess (gid, guess) {
   return function (dispatch, getState) {
     const { authentication, games, friends } = getState()
-    const huid = games.game.huid
-    const token = _.find(friends.friends, ['uid', huid]).token
+    const token = games.game.host.token
     const message = games.game.message
     const score = longestCommonSubstring(message.toLowerCase().trim(), guess.toLowerCase().trim())
     return Promise.all([
