@@ -31,15 +31,8 @@ class AppContainer extends Component {
     FCM.getFCMToken().then(ntoken => {
       token = ntoken
     })
-    this.notificationUnsubscribe = FCM.on('notification', notif => {
-      const { title, body } = notif.notification
-      if (notif) {
-        Alert.alert(title, body)
-      }
-    })
-    this.refreshUnsubscribe = FCM.on('refreshToken', ntoken => {
-      token = ntoken
-    })
+    this.notificationUnsubscribe = FCM.on('notification', notif => {})
+    this.refreshUnsubscribe = FCM.on('refreshToken', ntoken => token = ntoken)
     firebaseAuth.onAuthStateChanged((user) => {
       if (!user) {
         this.props.dispatch(notAuthed())
