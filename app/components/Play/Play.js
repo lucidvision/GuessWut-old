@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   guessInput: {
+    height: 40,
     borderColor: colors.blue,
     borderWidth: 1,
     margin: 10,
