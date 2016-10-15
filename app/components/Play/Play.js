@@ -8,44 +8,43 @@ const dismissKeyboard = require('dismissKeyboard')
 
 export default function Play (props) {
   return (
-    <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
-      <TouchableWithoutFeedback onPress={ () => { dismissKeyboard() } }>
+    <View style={styles.container}>
+      <TouchableWithoutFeedback onPress={() => { dismissKeyboard() }}>
         <View style={styles.innerContainer}>
-        <AppNavbar
-          title='Play Game'
-          leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
-        <View style={styles.gameContainer}>
-          <View style={styles.innerContainer}>
-            <Text style={styles.promptText}>Code</Text>
-            <Text style={styles.codeText}>{props.game.code}</Text>
-          </View>
-          {props.playerGuess.length > 0
-            ? <View style={{flex: 1}}>
-                <Text style={styles.promptText}>Your Guess</Text>
-                <Text style={styles.guessText}>{props.playerGuess}</Text>
-              </View>
-            : <View>
-                <View>
+          <AppNavbar
+            title='Play Game'
+            leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
+          <View style={styles.gameContainer}>
+            <View>
+              <Text style={styles.promptText}>Code</Text>
+              <Text style={styles.codeText}>{props.game.code}</Text>
+            </View>
+            {props.playerGuess.length > 0
+              ? <View style={{flex: 1}}>
                   <Text style={styles.promptText}>Your Guess</Text>
-                  <TextInput
-                    multiline
-                    autoCapitalize='none'
-                    autoCorrect={false}
-                    style={styles.guessInput}
-                    onChangeText={(text) => props.changeGuess(text)}
-                    value={props.guess} />
+                  <Text style={styles.guessText}>{props.playerGuess}</Text>
                 </View>
-                <TouchableOpacity
-                  style={props.guess.length > 0 ? styles.submitButton : styles.disabledButton}
-                  disabled={!props.guess.length > 0}
-                  onPress={props.onSubmitButtonPressed}>
-                  <Text style={styles.submitButtonText}>Submit Guess</Text>
-                </TouchableOpacity>
-              </View>}
+              : <KeyboardAvoidingView behavior={'padding'}>
+                  <View>
+                    <Text style={styles.promptText}>Your Guess</Text>
+                    <TextInput
+                      autoCapitalize='none'
+                      autoCorrect={false}
+                      style={styles.guessInput}
+                      onChangeText={(text) => props.changeGuess(text)}
+                      value={props.guess} />
+                  </View>
+                  <TouchableOpacity
+                    style={props.guess.length > 0 ? styles.submitButton : styles.disabledButton}
+                    disabled={!props.guess.length > 0}
+                    onPress={props.onSubmitButtonPressed}>
+                    <Text style={styles.submitButtonText}>Submit Guess</Text>
+                  </TouchableOpacity>
+                </KeyboardAvoidingView>}
           </View>
         </View>
       </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    </View>
   )
 }
 
@@ -76,7 +75,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   guessInput: {
-    height: 100,
     borderColor: colors.blue,
     borderWidth: 1,
     margin: 10,

@@ -47,9 +47,10 @@ const styles = StyleSheet.create({
     color: colors.primary
   },
   countText: {
-    flex: 1,
+    flex: 2,
     padding: 10,
     fontSize: fontSizes.secondary,
-    color: colors.blue
+    color: colors.blue,
+    textAlign: 'right'
   }
 })
