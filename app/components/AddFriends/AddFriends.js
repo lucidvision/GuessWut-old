@@ -23,6 +23,7 @@ export default function AddFriends (props) {
             maxLength={30}
             autoCapitalize={'none'}
             autoCorrect={false}
+            keyboardType='email-address'
             onChangeText={(text) => onUpdateSearchText(text)}
             value={props.searchText}
             placeholder='Search by email' />

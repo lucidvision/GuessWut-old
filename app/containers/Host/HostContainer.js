@@ -36,7 +36,7 @@ class HostContainer extends Component {
     this.props.navigator.pop()
   }
   handleOnBack = () => {
-    if (this.props.authedId === this.props.game.huid) {
+    if (this.props.authedId === this.props.game.host.uid) {
       this.props.navigator.pop()
     } else {
       this.props.dispatch(completeGamePlaying(this.props.game))

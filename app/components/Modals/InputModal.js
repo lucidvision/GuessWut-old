@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     borderColor: colors.blue,
+    backgroundColor: colors.white,
     marginTop: 100,
     alignSelf: 'center',
     justifyContent: 'space-between',
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
   },
   nameInput: {
     height: 40,
+    width: 300,
     borderColor: colors.blue,
     borderWidth: 1,
     padding: 10,
