@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Text, TextInput,
+  TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import { colors, fontSizes } from '~/styles'
 
 export default function Splash (props) {
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
       <Text style={styles.title}>Code</Text>
       <View style={styles.loginContainer}>
         <TextInput
           style={styles.input}
-          autoFocus
           autoCapitalize='none'
           autoCorrect={false}
           maxLength={140}
@@ -36,7 +36,7 @@ export default function Splash (props) {
             <Text style={styles.loginText}>Login</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 

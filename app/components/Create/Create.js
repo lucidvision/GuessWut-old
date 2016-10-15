@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Text, TextInput,
+  TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import { AppNavbar, Button } from '~/components'
 import { colors, fontSizes } from '~/styles'
 
 export default function Create (props) {
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
       <AppNavbar
         title='Create Game'
         leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
@@ -30,7 +31,7 @@ export default function Create (props) {
           <Text style={styles.createButtonText}>Create game</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 
