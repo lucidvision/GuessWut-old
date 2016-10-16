@@ -5,7 +5,7 @@ import { colors } from '~/styles'
 export default function Button (props) {
   return (
     <TouchableOpacity onPress={props.onPress} style={props.style}>
-      <Text style={{color: colors.blue}}>{props.text}</Text>
+      <Text style={{marginLeft: 10, marginRight: 10, color: colors.blue}}>{props.text}</Text>
     </TouchableOpacity>
   )
 }

@@ -6,10 +6,10 @@ import { colors } from '~/styles'
 export default function AppNavbar (props) {
   let optionalAttrs = {}
   props.leftButton && (optionalAttrs.leftButton = React.cloneElement(props.leftButton, {
-    style: {marginLeft: 10, justifyContent: 'center'}
+    style: {justifyContent: 'center'}
   }))
   props.rightButton && (optionalAttrs.rightButton = React.cloneElement(props.rightButton, {
-    style: {marginRight: 10, justifyContent: 'center'}
+    style: {justifyContent: 'center'}
   }))
   return (
     <NavigationBar

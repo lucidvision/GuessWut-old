@@ -1,15 +1,17 @@
 import React, { PropTypes } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { colors } from '~/styles'
 
 export default function Add (props) {
   return (
     <TouchableOpacity onPress={props.onPress} style={props.style}>
-      <Icon
-        name='ios-add-outline'
-        size={props.size}
-        color={colors.blue} />
+      <View style={{height: 40, width: 40, justifyContent: 'center', alignItems: 'center'}}>
+        <Icon
+          name='ios-add-outline'
+          size={props.size}
+          color={colors.blue} />
+      </View>
     </TouchableOpacity>
   )
 }

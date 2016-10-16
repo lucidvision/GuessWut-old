@@ -67,21 +67,22 @@ const styles = StyleSheet.create({
   },
   nameInput: {
     height: 40,
-    width: 300,
+    width: 260,
     borderColor: colors.blue,
     borderWidth: 1,
     padding: 10,
-    margin: 10
+    margin: 10,
+    alignSelf: 'center'
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
   button: {
-    backgroundColor: colors.blue,
     borderRadius: 25,
     padding: 10,
-    margin: 10
+    margin: 10,
+    backgroundColor: colors.blue
   },
   buttonText: {
     color: colors.white,
