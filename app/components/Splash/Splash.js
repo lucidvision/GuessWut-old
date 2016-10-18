@@ -7,9 +7,8 @@ const dismissKeyboard = require('dismissKeyboard')
 
 export default function Splash (props) {
   return (
-    <View style={styles.container}>
       <TouchableWithoutFeedback onPress={ () => { dismissKeyboard() } }>
-        <View style={styles.innerContainer}>
+        <View style={styles.container}>
           <Text style={styles.title}>Code</Text>
           <KeyboardAvoidingView behavior={'padding'} style={styles.loginContainer}>
             <TextInput
@@ -42,7 +41,6 @@ export default function Splash (props) {
           </KeyboardAvoidingView>
         </View>
       </TouchableWithoutFeedback>
-    </View>
   )
 }
 
@@ -57,14 +55,9 @@ Splash.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white
-  },
-  innerContainer: {
-    flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 50,
-    paddingBottom: 40
+    backgroundColor: colors.white
   },
   title: {
     color: colors.blue,
@@ -73,6 +66,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   loginContainer: {
+    marginTop: 80,
     alignItems: 'center'
   },
   input: {

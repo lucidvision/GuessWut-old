@@ -11,12 +11,12 @@ export default function Game (props) {
         {props.game.completed
           ? <Icon
               name='ios-alert-outline'
-              size={40}
+              size={35}
               color={colors.blue} />
           : props.guessed
             ? <Icon
                 name='ios-checkmark-circle-outline'
-                size={40}
+                size={35}
                 color={colors.blue} />
             : null}
       </View>

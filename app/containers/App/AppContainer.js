@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Alert } from 'react-native'
+import { View } from 'react-native'
 import FCM from 'react-native-fcm'
 import { connect } from 'react-redux'
 import { AppNavigator } from '~/containers'
@@ -28,9 +28,7 @@ class AppContainer extends Component {
   componentDidMount () {
     let token
     FCM.requestPermissions()
-    FCM.getFCMToken().then(ntoken => {
-      token = ntoken
-    })
+    FCM.getFCMToken().then(ntoken => token = ntoken)
     this.notificationUnsubscribe = FCM.on('notification', notif => {})
     this.refreshUnsubscribe = FCM.on('refreshToken', ntoken => token = ntoken)
     firebaseAuth.onAuthStateChanged((user) => {

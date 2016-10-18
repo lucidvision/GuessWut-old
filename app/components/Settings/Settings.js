@@ -14,6 +14,7 @@ export default function Settings (props) {
           title='Settings'
           leftButton={<Button text={'Close'} onPress={props.onBack}/>}
           rightButton={<Button text={'Save'} onPress={props.onSave}/>} />
+        <Text style={styles.nameHeader}>Your Name</Text>
         <TextInput
           style={styles.nameInput}
           maxLength={30}
@@ -43,6 +44,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white
   },
+  nameHeader: {
+    color: colors.blue,
+    fontSize: fontSizes.primary,
+    padding: 10,
+    textAlign: 'center'
+  },
+  nameInput: {
+    height: 40,
+    borderColor: colors.blue,
+    borderWidth: 1,
+    padding: 10,
+    margin: 10
+  },
   logout: {
     backgroundColor: colors.blue,
     alignItems: 'stretch',
@@ -54,12 +68,5 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: fontSizes.secondary,
     textAlign: 'center'
-  },
-  nameInput: {
-    height: 40,
-    borderColor: colors.blue,
-    borderWidth: 1,
-    padding: 10,
-    margin: 10
   }
 })

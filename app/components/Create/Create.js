@@ -8,38 +8,34 @@ const dismissKeyboard = require('dismissKeyboard')
 
 export default function Create (props) {
   return (
-    <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={() => { dismissKeyboard() }}>
-        <View style={styles.innerContainer}>
-          <AppNavbar
-            title='Create Game'
-            leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
-          <View style={styles.messageContainer}>
-            <View>
-              <Text style={styles.promptText}>Code</Text>
-              <Text style={styles.codeText}>{props.code}</Text>
-            </View>
-            <KeyboardAvoidingView behavior={'padding'}>
-              <View>
-                <Text style={styles.promptText}>Type in a message</Text>
-                <TextInput
-                  autoCapitalize='none'
-                  autoCorrect={false}
-                  style={styles.messageInput}
-                  onChangeText={(text) => props.changeMessage(text)}
-                  value={props.message} />
-              </View>
-              <TouchableOpacity
-                style={props.message.length > 0 ? styles.createButton : styles.disabledButton}
-                disabled={!props.message.length > 0}
-                onPress={props.onCreateButtonPressed}>
-                <Text style={styles.createButtonText}>Create game</Text>
-              </TouchableOpacity>
-            </KeyboardAvoidingView>
+    <TouchableWithoutFeedback onPress={() => { dismissKeyboard() }}>
+      <View style={styles.container}>
+        <AppNavbar
+          title='Create Game'
+          leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
+        <KeyboardAvoidingView behavior={'padding'} style={styles.messageContainer}>
+          <View style={{height: 100}}>
+            <Text style={styles.promptText}>Code</Text>
+            <Text style={styles.codeText}>{props.code}</Text>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </View>
+          <View>
+            <Text style={styles.promptText}>Type in a message</Text>
+            <TextInput
+              autoCapitalize='none'
+              autoCorrect={false}
+              style={styles.messageInput}
+              onChangeText={(text) => props.changeMessage(text)}
+              value={props.message} />
+          </View>
+          <TouchableOpacity
+            style={props.message.length > 0 ? styles.createButton : styles.disabledButton}
+            disabled={!props.message.length > 0}
+            onPress={props.onCreateButtonPressed}>
+            <Text style={styles.createButtonText}>Create game</Text>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
+      </View>
+    </TouchableWithoutFeedback>
   )
 }
 
@@ -55,9 +51,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white
-  },
-  innerContainer: {
-    flex: 1
   },
   messageContainer: {
     flex: 1,

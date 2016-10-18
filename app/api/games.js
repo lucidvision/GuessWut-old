@@ -2,8 +2,7 @@ import { ref } from '~/config/constants'
 
 export function createGame (game) {
   const gid = ref.child('games').push().key
-  const gameData = {...game, gid}
-  const gamePromise = ref.child(`games/${gid}`).set(gameData)
+  const gamePromise = ref.child(`games/${gid}`).set({...game, gid})
   return {
     gid,
     gamePromise

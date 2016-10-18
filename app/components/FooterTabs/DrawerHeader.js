@@ -6,7 +6,7 @@ export default function DrawerHeader (props) {
   return (
     <View>
       <Text style={styles.headerText}>
-        Coder
+        Code
       </Text>
     </View>
   )

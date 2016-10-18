@@ -120,7 +120,7 @@ export function saveGameFanout (puids) {
 
 export function saveGuess (gid, guess) {
   return function (dispatch, getState) {
-    const { authentication, games, friends } = getState()
+    const { authentication, games } = getState()
     const token = games.game.host.token
     const message = games.game.message
     const score = longestCommonSubstring(message.toLowerCase().trim(), guess.toLowerCase().trim())
