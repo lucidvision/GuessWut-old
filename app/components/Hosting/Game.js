@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
     textAlign: 'right'
   },
   icon: {
-    flex: 0.8
+    flex: 1
   }
 })

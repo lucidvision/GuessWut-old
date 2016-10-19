@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
     color: colors.primary
   },
   icon: {
-    flex: 0.8
+    flex: 1
   }
 })

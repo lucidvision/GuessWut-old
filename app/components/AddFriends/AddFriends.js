@@ -98,11 +98,12 @@ const styles = StyleSheet.create({
   resultContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 10
   },
   resultText: {
     flex: 1,
-    padding: 10,
+    marginLeft: 10,
     color: colors.blue,
     fontSize: fontSizes.secondary
   },

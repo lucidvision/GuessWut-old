@@ -109,10 +109,11 @@ export function saveGameFanout (puids) {
       timestamp: Date.now()
     }
     const { gid, gamePromise } = createGame(game)
+    const { uid, displayName } = users.user
     return Promise.all([
       gamePromise,
-      saveToGamesHosting(gid, users.user.uid),
-      sendNotification(tokens, 'Game Invite!', 'You are now playing in a game!'),
+      saveToGamesHosting(gid, uid),
+      sendNotification(tokens, 'Game Invite!', `You are playing in ${displayName}'s game!`),
       puids.forEach((puid) => saveToGamesPlaying(gid, puid))
     ])
   }
@@ -120,13 +121,14 @@ export function saveGameFanout (puids) {
 
 export function saveGuess (gid, guess) {
   return function (dispatch, getState) {
-    const { authentication, games } = getState()
-    const token = games.game.host.token
-    const message = games.game.message
+    const { authentication, users, games } = getState()
+    const { token } = games.game.host
+    const { message } = games.game
+    const { displayName } = users.user
     const score = longestCommonSubstring(message.toLowerCase().trim(), guess.toLowerCase().trim())
     return Promise.all([
       saveGuessToGames(gid, authentication.authedId, guess, score),
-      sendNotification([token], 'Player Guessed', 'A player has made a guess!')
+      sendNotification([token], 'Player Guessed', `${displayName} has made a guess!`)
     ])
   }
 }
@@ -135,11 +137,12 @@ export function releaseScoreAndCompleteGame (game) {
   return function (dispatch, getState) {
     const { authentication, games } = getState()
     const tokens = _.map(Object.values(games.game.players), 'token')
+    const { displayName } = games.game.host
     return Promise.all([
       completeGame(game.gid),
       removeFromGamesHosting(game.gid, authentication.authedId),
       saveToGamesCompleted(game.gid, authentication.authedId),
-      sendNotification(tokens, 'Game Results', 'A host has released the results!')
+      sendNotification(tokens, 'Game Results', `${displayName} has released the results!`)
     ])
   }
 }

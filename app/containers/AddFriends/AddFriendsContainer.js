@@ -73,17 +73,17 @@ class AddFriendsContainer extends Component {
     )
   }
   render () {
-    const uid = Object.keys(this.props.userFound)[0]
+    const { uid, displayName } = this.props.userFound
     const isAlreadyFriend = _.includes(this.props.fuids, uid)
     const isAlreadyRequested = _.includes(this.props.ruids, uid)
     const friendFound = !_.isEmpty(this.props.userFound)
     let resultText
     if (isAlreadyFriend) {
-      resultText = 'User is already your friend.'
+      resultText = `${displayName} is already your friend.`
     } else if (isAlreadyRequested) {
-      resultText = 'User is waiting for your confirmation.'
+      resultText = `${displayName} is waiting for your confirmation.`
     } else if (friendFound) {
-      resultText = 'User found!'
+      resultText = `${displayName} found!`
     } else {
       resultText = 'User not found.'
     }

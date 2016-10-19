@@ -21,7 +21,7 @@ export default function Play (props) {
           {props.playerGuess.length > 0
             ? <View style={styles.guessContainer}>
                 <Text style={styles.promptText}>Your Guess</Text>
-                <Text style={styles.guessText}>{props.playerGuess}</Text>
+                <Text style={styles.codeText}>{props.playerGuess}</Text>
               </View>
             : <View style={styles.guessContainer}>
                 <Text style={styles.promptText}>Your Guess</Text>
@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
   },
   codeText: {
     color: colors.blue,
-    margin: 10,
     padding: 10,
     fontSize: fontSizes.secondary
   },
@@ -108,11 +107,5 @@ const styles = StyleSheet.create({
   submitButtonText: {
     color: colors.white,
     fontSize: fontSizes.primary
-  },
-  guessText: {
-    color: colors.blue,
-    margin: 10,
-    padding: 10,
-    fontSize: fontSizes.secondary
   }
 })

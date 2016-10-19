@@ -35,7 +35,7 @@ export function findFriend (email) {
     if (email !== users.user.email) {
       searchUsersByEmail(email)
         .then((userWithId) => {
-          dispatch(updateUserFound(userWithId))
+          dispatch(updateUserFound(Object.values(userWithId)[0]))
         })
     }
   }
@@ -67,11 +67,10 @@ export function fetchAndSetRequestsListener (uid) {
 export function sendRequest () {
   return function (dispatch, getState) {
     const { authentication, addFriends } = getState()
-    const fuid = Object.keys(addFriends.userFound)[0]
-    const token = addFriends.userFound[fuid].token
-    return addRequest(authentication.authedId, fuid)
+    const { uid, displayName, token } = addFriends.userFound
+    return addRequest(authentication.authedId, uid)
       .then(() => {
-        sendNotification([token], 'Friend Request Received', 'You have received a Friend Request!')
+        sendNotification([token], 'Friend Request', `${displayName} sent you a Friend Request!`)
           .then(response => {
             dispatch(updateSearchText(''))
             dispatch(updateUserFound({}))
@@ -82,9 +81,10 @@ export function sendRequest () {
 
 export function confirmRequest (fuid, token) {
   return function (dispatch, getState) {
-    const { authentication } = getState()
+    const { authentication, users } = getState()
+    const { displayName } = users.user
     return Promise.all([
-      sendNotification([token], 'Friend Confirmed', 'Your friend confirmed your request!'),
+      sendNotification([token], 'Friend Confirmed', `${displayName} confirmed your request!`),
       addFriend(authentication.authedId, fuid),
       addFriend(fuid, authentication.authedId),
       removeRequest(authentication.authedId, fuid)

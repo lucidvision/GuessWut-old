@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   guessText: {
     flex: 1,
-    padding: 20,
+    padding: 10,
     fontSize: fontSizes.secondary,
     color: colors.blue
   }

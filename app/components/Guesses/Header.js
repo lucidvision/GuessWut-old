@@ -14,7 +14,8 @@ Request.propTypes = {
 
 const styles = StyleSheet.create({
   headerText: {
-    padding: 20,
+    paddingTop: 20,
+    paddingLeft: 20,
     fontSize: fontSizes.primary,
     color: colors.primary
   }

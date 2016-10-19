@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    width: 300,
+    width: 280,
     borderColor: colors.white,
     backgroundColor: colors.white,
     borderWidth: 1,

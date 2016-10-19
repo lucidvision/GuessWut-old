@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
   },
   codeText: {
     color: colors.blue,
-    margin: 10,
     padding: 10,
     fontSize: fontSizes.secondary
   },
