@@ -35,7 +35,7 @@ export function findFriend (email) {
     if (email !== users.user.email) {
       searchUsersByEmail(email)
         .then((userWithId) => {
-          dispatch(updateUserFound(Object.values(userWithId)[0]))
+          dispatch(updateUserFound(Object.values(userWithId)[0] || {}))
         })
     }
   }
