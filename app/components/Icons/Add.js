@@ -8,9 +8,9 @@ export default function Add (props) {
     <TouchableOpacity onPress={props.onPress} style={props.style}>
       <View style={{height: 40, width: 40, justifyContent: 'center', alignItems: 'center'}}>
         <Icon
-          name='ios-add-outline'
+          name='md-add'
           size={props.size}
-          color={colors.blue} />
+          color={colors.icon} />
       </View>
     </TouchableOpacity>
   )

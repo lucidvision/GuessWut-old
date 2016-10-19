@@ -32,19 +32,19 @@ const styles = StyleSheet.create({
     flex: 2,
     padding: 10,
     fontSize: fontSizes.primary,
-    color: colors.blue
+    color: colors.primary
   },
   scoreText: {
     flex: 1,
     padding: 10,
     fontSize: fontSizes.secondary,
-    color: colors.primary,
+    color: colors.blue,
     textAlign: 'right'
   },
   guessText: {
     flex: 1,
-    padding: 10,
+    padding: 20,
     fontSize: fontSizes.secondary,
-    color: colors.primary
+    color: colors.blue
   }
 })

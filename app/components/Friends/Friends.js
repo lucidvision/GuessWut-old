@@ -19,7 +19,7 @@ export default function Friends (props) {
                 automaticallyAdjustContentInsets={false}
                 renderRow={props.renderRow}
                 dataSource={props.dataSource} />
-            : <Text style={styles.noFriendsText}>No Friends</Text>}
+            : <Text style={styles.noFriendsText}>You don't have any friends yet</Text>}
       </View>
     </View>
   )
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: fontSizes.primary,
     color: colors.blue,
+    marginTop: 100,
     textAlign: 'center'
   }
 })

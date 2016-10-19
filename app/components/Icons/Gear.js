@@ -8,9 +8,9 @@ export default function Gear (props) {
     <TouchableOpacity onPress={props.onPress} style={props.style}>
       <View style={{height: 40, width: 40, justifyContent: 'center', alignItems: 'center'}}>
         <Icon
-          name='ios-settings-outline'
+          name='ios-settings'
           size={props.size}
-          color={colors.blue} />
+          color={colors.icon} />
       </View>
     </TouchableOpacity>
   )

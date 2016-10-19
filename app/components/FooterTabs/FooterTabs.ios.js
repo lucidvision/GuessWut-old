@@ -6,7 +6,8 @@ import { PlayingContainer, HostingContainer, FriendsContainer } from '~/containe
 
 export default function FooterTabs (props) {
   return (
-    <TabBarIOS tintColor={colors.active}>
+    <TabBarIOS
+      tintColor={colors.active}>
       <Icon.TabBarItem
         iconSize={35}
         iconName='ios-trophy-outline'

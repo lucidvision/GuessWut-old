@@ -35,8 +35,8 @@ export default class FlashNotification extends Component {
     return {
       width: this.state.width,
       opacity: this.state.opacity,
-      top: this.props.location === 'top' ? 60 : undefined,
-      bottom: this.props.location === 'top' ? undefined : 60
+      top: this.props.location === 'top' ? 100 : undefined,
+      bottom: this.props.location === 'top' ? undefined : 100
     }
   }
   render () {

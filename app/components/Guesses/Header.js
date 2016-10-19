@@ -4,9 +4,7 @@ import { colors, fontSizes } from '~/styles'
 
 export default function Request (props) {
   return (
-    <Text style={styles.headerText}>
-      {props.text}
-    </Text>
+    <Text style={styles.headerText}>{props.text}</Text>
   )
 }
 
@@ -16,9 +14,8 @@ Request.propTypes = {
 
 const styles = StyleSheet.create({
   headerText: {
-    padding: 10,
+    padding: 20,
     fontSize: fontSizes.primary,
-    color: colors.blue,
-    textAlign: 'center'
+    color: colors.primary
   }
 })

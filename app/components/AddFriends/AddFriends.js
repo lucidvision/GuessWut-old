@@ -18,6 +18,7 @@ export default function AddFriends (props) {
           title='Add Friends'
           leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
         <View style={styles.searchContainer}>
+          <Text style={styles.searchHeader}>Search for Friends</Text>
           <TextInput
             style={styles.searchInput}
             maxLength={30}
@@ -27,19 +28,19 @@ export default function AddFriends (props) {
             onChangeText={(text) => onUpdateSearchText(text)}
             value={props.searchText}
             placeholder='Search by email' />
+          {props.searchText.length > 0
+            ? <View style={styles.resultContainer}>
+                <Text style={styles.resultText}>{props.resultText}</Text>
+                {props.showResult
+                  ? <TouchableOpacity
+                      style={styles.addButton}
+                      onPress={props.onAddPressed}>
+                      <Text style={styles.addButtonText}>Add+</Text>
+                    </TouchableOpacity>
+                  : null}
+              </View>
+            : null}
         </View>
-        {props.searchText.length > 0
-          ? <View style={styles.resultContainer}>
-              <Text style={styles.resultText}>{props.resultText}</Text>
-              {props.showResult
-                ? <TouchableOpacity
-                    style={styles.addButton}
-                    onPress={props.onAddPressed}>
-                    <Text style={styles.addButtonText}>Add+</Text>
-                  </TouchableOpacity>
-                : null}
-            </View>
-          : null}
         <View style={styles.listContainer}>
           {props.listenerSet === false
             ? <ActivityIndicator
@@ -78,13 +79,20 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white
   },
   searchContainer: {
-    marginTop: 30,
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+    padding: 10
+  },
+  searchHeader: {
+    color: colors.primary,
+    fontSize: fontSizes.primary,
     padding: 10
   },
   searchInput: {
     height: 40,
     borderColor: colors.blue,
     borderWidth: 1,
+    margin: 10,
     padding: 10
   },
   resultContainer: {
@@ -121,6 +129,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: fontSizes.primary,
     color: colors.blue,
+    marginTop: 100,
     textAlign: 'center'
   }
 })

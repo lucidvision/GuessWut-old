@@ -10,7 +10,7 @@ export default function Back (props) {
         <Icon
           name='ios-arrow-back'
           size={props.size}
-          color={colors.blue} />
+          color={colors.icon} />
       </View>
     </TouchableOpacity>
   )

@@ -13,19 +13,20 @@ export default function Create (props) {
         <AppNavbar
           title='Create Game'
           leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
-        <KeyboardAvoidingView behavior={'padding'} style={styles.messageContainer}>
-          <View style={{height: 100}}>
+        <KeyboardAvoidingView behavior={'padding'} style={styles.gameContainer}>
+          <View style={styles.codeContainer}>
             <Text style={styles.promptText}>Code</Text>
             <Text style={styles.codeText}>{props.code}</Text>
           </View>
-          <View>
-            <Text style={styles.promptText}>Type in a message</Text>
+          <View style={styles.messageContainer}>
+            <Text style={styles.promptText}>Your Message</Text>
             <TextInput
               autoCapitalize='none'
               autoCorrect={false}
               style={styles.messageInput}
               onChangeText={(text) => props.changeMessage(text)}
-              value={props.message} />
+              value={props.message}
+              placeholder={'Start typing here'} />
           </View>
           <TouchableOpacity
             style={props.message.length > 0 ? styles.createButton : styles.disabledButton}
@@ -52,26 +53,35 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white
   },
-  messageContainer: {
+  gameContainer: {
     flex: 1,
     justifyContent: 'space-between'
+  },
+  codeContainer : {
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+    padding: 10
   },
   promptText: {
     padding: 10,
     fontSize: fontSizes.primary,
+    color: colors.primary
+  },
+  codeText: {
     color: colors.blue,
-    textAlign: 'center'
+    margin: 10,
+    padding: 10,
+    fontSize: fontSizes.secondary
+  },
+  messageContainer: {
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+    padding: 10
   },
   messageInput: {
     height: 40,
     borderColor: colors.blue,
     borderWidth: 1,
-    margin: 10,
-    padding: 10,
-    fontSize: fontSizes.secondary
-  },
-  codeText: {
-    color: colors.blue,
     margin: 10,
     padding: 10,
     fontSize: fontSizes.secondary

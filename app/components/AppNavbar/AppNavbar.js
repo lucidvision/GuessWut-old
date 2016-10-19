@@ -15,8 +15,8 @@ export default function AppNavbar (props) {
     <NavigationBar
       {...optionalAttrs}
       style={Platform.OS === 'android' ? {marginTop: 8, marginBottom: 8} : null}
-      tintColor={colors.tabPrimary}
-      title={{title: props.title}}/>
+      tintColor={colors.navbar}
+      title={{title: props.title, tintColor: colors.white}}/>
   )
 }
 

@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { Navigator, Platform } from 'react-native'
-import { SplashContainer, FooterTabsContainer, SettingsContainer,
-  CreateContainer, PlayersContainer, AddFriendsContainer, PlayContainer, HostContainer } from '~/containers'
+import { SplashContainer, FooterTabsContainer, SettingsContainer, CreateContainer,
+  PlayersContainer, AddFriendsContainer, PlayContainer, HostContainer } from '~/containers'
 
 export default class AppNavigator extends Component {
   static propTypes = {
@@ -23,18 +23,15 @@ export default class AppNavigator extends Component {
     } else if (route.host === true) {
       return <HostContainer navigator={navigator} />
     }
-
     return <FooterTabsContainer navigator={navigator} />
   }
   configureScene = (route) => {
     if (Platform.OS === 'android') {
       return Navigator.SceneConfigs.FloatFromBottomAndroid
     }
-
     if (route.settings === true || route.create === true || route.addFriends === true || route.home === true) {
       return Navigator.SceneConfigs.FloatFromBottom
     }
-
     return Navigator.SceneConfigs.FloatFromRight
   }
   render () {

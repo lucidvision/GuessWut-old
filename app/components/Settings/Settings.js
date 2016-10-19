@@ -14,15 +14,17 @@ export default function Settings (props) {
           title='Settings'
           leftButton={<Button text={'Close'} onPress={props.onBack}/>}
           rightButton={<Button text={'Save'} onPress={props.onSave}/>} />
-        <Text style={styles.nameHeader}>Your Name</Text>
-        <TextInput
-          style={styles.nameInput}
-          maxLength={30}
-          autoCapitalize={'none'}
-          autoCorrect={false}
-          onChangeText={(text) => props.changeName(text)}
-          value={props.name}
-          placeholder='Name' />
+        <View style={styles.nameContainer}>
+          <Text style={styles.nameHeader}>Your Name</Text>
+          <TextInput
+            style={styles.nameInput}
+            maxLength={30}
+            autoCapitalize={'none'}
+            autoCorrect={false}
+            onChangeText={(text) => props.changeName(text)}
+            value={props.name}
+            placeholder='Name' />
+        </View>
         <TouchableOpacity onPress={props.onLogout} style={styles.logout}>
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
@@ -44,11 +46,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white
   },
+  nameContainer: {
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+    padding: 10
+  },
   nameHeader: {
-    color: colors.blue,
+    color: colors.primary,
     fontSize: fontSizes.primary,
-    padding: 10,
-    textAlign: 'center'
+    padding: 10
   },
   nameInput: {
     height: 40,

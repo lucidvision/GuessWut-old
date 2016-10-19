@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: fontSizes.primary,
     color: colors.blue,
+    marginTop: 100,
     textAlign: 'center'
   }
 })

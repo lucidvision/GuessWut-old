@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, StyleSheet, Text, TextInput, TouchableOpacity,
-  TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native'
+  TouchableWithoutFeedback } from 'react-native'
 import { colors, fontSizes } from '~/styles'
 
 const dismissKeyboard = require('dismissKeyboard')
@@ -10,7 +10,7 @@ export default function Splash (props) {
       <TouchableWithoutFeedback onPress={ () => { dismissKeyboard() } }>
         <View style={styles.container}>
           <Text style={styles.title}>Code</Text>
-          <KeyboardAvoidingView behavior={'padding'} style={styles.loginContainer}>
+          <View style={styles.loginContainer}>
             <TextInput
               style={styles.input}
               autoCapitalize='none'
@@ -38,7 +38,10 @@ export default function Splash (props) {
               onPress={props.onLoginPressed}>
                 <Text style={styles.loginText}>Login</Text>
             </TouchableOpacity>
-          </KeyboardAvoidingView>
+          </View>
+          <Text style={styles.promptText}>
+            If you don't have an account, one will be created for you.
+          </Text>
         </View>
       </TouchableWithoutFeedback>
   )
@@ -55,53 +58,45 @@ Splash.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: colors.white
+    backgroundColor: colors.base
   },
   title: {
-    color: colors.blue,
+    color: colors.white,
     fontSize: 40,
     margin: 20,
     textAlign: 'center'
   },
   loginContainer: {
-    marginTop: 80,
+    justifyContent: 'center',
     alignItems: 'center'
   },
   input: {
     height: 40,
     width: 300,
-    borderColor: colors.blue,
+    borderColor: colors.white,
+    backgroundColor: colors.white,
     borderWidth: 1,
     padding: 10,
     margin: 10
   },
   loginButton: {
-    backgroundColor: colors.blue,
+    backgroundColor: colors.white,
     width: 200,
     borderRadius: 25,
     padding: 10,
     margin: 10
   },
   loginText: {
+    color: colors.black,
+    fontSize: fontSizes.secondary,
+    textAlign: 'center'
+  },
+  promptText: {
     color: colors.white,
     fontSize: fontSizes.secondary,
-    textAlign: 'center'
-  },
-  fbLoginContainer: {
-    paddingLeft: 30,
-    paddingRight: 30,
-    alignItems: 'center'
-  },
-  fbLoginButton: {
-    height: 30,
-    width: 180,
-    marginBottom: 15
-  },
-  assuranceText: {
-    color: colors.secondary,
-    fontSize: fontSizes.secondary,
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: 30
   }
 })

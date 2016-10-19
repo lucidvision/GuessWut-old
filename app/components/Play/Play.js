@@ -14,16 +14,16 @@ export default function Play (props) {
           title='Play Game'
           leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
         <KeyboardAvoidingView behavior={'padding'} style={styles.gameContainer}>
-          <View>
+          <View style={styles.codeContainer}>
             <Text style={styles.promptText}>Code</Text>
             <Text style={styles.codeText}>{props.game.code}</Text>
           </View>
           {props.playerGuess.length > 0
-            ? <View>
+            ? <View style={styles.guessContainer}>
                 <Text style={styles.promptText}>Your Guess</Text>
                 <Text style={styles.guessText}>{props.playerGuess}</Text>
               </View>
-            : <View>
+            : <View style={styles.guessContainer}>
                 <Text style={styles.promptText}>Your Guess</Text>
                 <TextInput
                   autoCapitalize='none'
@@ -61,22 +61,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between'
   },
+  codeContainer: {
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+    padding: 10
+  },
   promptText: {
     padding: 10,
     fontSize: fontSizes.primary,
+    color: colors.primary
+  },
+  codeText: {
     color: colors.blue,
-    textAlign: 'center'
+    margin: 10,
+    padding: 10,
+    fontSize: fontSizes.secondary
+  },
+  guessContainer: {
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+    padding: 10
   },
   guessInput: {
     height: 40,
     borderColor: colors.blue,
     borderWidth: 1,
-    margin: 10,
-    padding: 10,
-    fontSize: fontSizes.secondary
-  },
-  codeText: {
-    color: colors.blue,
     margin: 10,
     padding: 10,
     fontSize: fontSizes.secondary

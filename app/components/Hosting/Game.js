@@ -14,12 +14,14 @@ export default function Game (props) {
         {guessedCount === playersCount
           ? props.game.completed
             ? <Icon
+                style={styles.icon}
                 name='ios-alert-outline'
-                size={40}
+                size={35}
                 color={colors.blue} />
             : <Icon
+                style={styles.icon}
                 name='ios-checkmark-circle-outline'
-                size={40}
+                size={35}
                 color={colors.blue} />
           : <Text style={styles.countText}>{`${guessedCount} / ${playersCount}`}</Text>}
       </View>
@@ -52,5 +54,8 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.secondary,
     color: colors.blue,
     textAlign: 'right'
+  },
+  icon: {
+    flex: 0.8
   }
 })

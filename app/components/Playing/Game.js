@@ -10,11 +10,13 @@ export default function Game (props) {
         <Text style={styles.codeText}>{props.game.code}</Text>
         {props.game.completed
           ? <Icon
+              style={styles.icon}
               name='ios-alert-outline'
               size={35}
               color={colors.blue} />
           : props.guessed
             ? <Icon
+                style={styles.icon}
                 name='ios-checkmark-circle-outline'
                 size={35}
                 color={colors.blue} />
@@ -39,8 +41,12 @@ const styles = StyleSheet.create({
     borderColor: colors.border
   },
   codeText: {
+    flex: 8,
     padding: 10,
     fontSize: fontSizes.secondary,
     color: colors.primary
+  },
+  icon: {
+    flex: 0.8
   }
 })
