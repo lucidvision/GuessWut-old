@@ -142,7 +142,7 @@ export function releaseScoreAndCompleteGame (game) {
       completeGame(game.gid),
       removeFromGamesHosting(game.gid, authentication.authedId),
       saveToGamesCompleted(game.gid, authentication.authedId),
-      sendNotification(tokens, 'Game Results', `${displayName} has released the results!`)
+      sendNotification(tokens, 'Game Results', `${displayName} has released game results!`)
     ])
   }
 }

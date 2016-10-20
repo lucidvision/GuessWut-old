@@ -66,11 +66,12 @@ export function fetchAndSetRequestsListener (uid) {
 
 export function sendRequest () {
   return function (dispatch, getState) {
-    const { authentication, addFriends } = getState()
-    const { uid, displayName, token } = addFriends.userFound
+    const { authentication, addFriends, users } = getState()
+    const { uid, token } = addFriends.userFound
+    const { displayName } = users.user
     return addRequest(authentication.authedId, uid)
       .then(() => {
-        sendNotification([token], 'Friend Request', `${displayName} sent you a Friend Request!`)
+        sendNotification([token], 'Friend Request', `${displayName} sent you a friend request!`)
           .then(response => {
             dispatch(updateSearchText(''))
             dispatch(updateUserFound({}))
