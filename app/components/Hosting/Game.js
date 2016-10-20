@@ -12,17 +12,11 @@ export default function Game (props) {
       <View style={styles.container}>
         <Text style={styles.codeText}>{props.game.code}</Text>
         {guessedCount === playersCount
-          ? props.game.completed
-            ? <Icon
-                style={styles.icon}
-                name='ios-alert-outline'
-                size={35}
-                color={colors.blue} />
-            : <Icon
-                style={styles.icon}
-                name='ios-checkmark-circle-outline'
-                size={35}
-                color={colors.blue} />
+          ? <Icon
+              style={styles.icon}
+              name='ios-alert-outline'
+              size={35}
+              color={colors.blue} />
           : <Text style={styles.countText}>{`${guessedCount} / ${playersCount}`}</Text>}
       </View>
     </TouchableOpacity>
