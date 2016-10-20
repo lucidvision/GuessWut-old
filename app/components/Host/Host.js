@@ -14,7 +14,7 @@ export default function Host (props) {
                       : null} />
       <View style={styles.gameContainer}>
         <View style={styles.messageContainer}>
-          <Text style={styles.promptText}>Message</Text>
+          <Text style={styles.promptText}>{`${props.game.host.displayName}'s Message`}</Text>
           <Text style={styles.codeText}>{props.game.message}</Text>
         </View>
         <View style={styles.codeContainer}>

@@ -15,7 +15,7 @@ export default function Play (props) {
           leftButton={<Button text={'Close'} onPress={props.onBack}/>} />
         <KeyboardAvoidingView behavior={'padding'} style={styles.gameContainer}>
           <View style={styles.codeContainer}>
-            <Text style={styles.promptText}>Code</Text>
+            <Text style={styles.promptText}>{`${props.game.host.displayName}'s Code`}</Text>
             <Text style={styles.codeText}>{props.game.code}</Text>
           </View>
           {props.playerGuess.length > 0

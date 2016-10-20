@@ -9,6 +9,8 @@ import Request from '~/components/AddFriends/Request'
 import { showFlashNotification } from '~/redux/modules/flashNotification'
 import _ from 'lodash'
 
+const dismissKeyboard = require('dismissKeyboard')
+
 class AddFriendsContainer extends Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -49,11 +51,13 @@ class AddFriendsContainer extends Component {
     this.props.dispatch(findFriend(text))
   }
   handleAddPressed = () => {
+    dismissKeyboard()
     this.props.dispatch(sendRequest())
       .then(() => this.props.dispatch(showFlashNotification({text: 'Friend request sent!'})))
       .catch(() => this.props.dispatch(showFlashNotification({text: 'Error with friend request!'})))
   }
   handleConfirmPressed = ({uid, token}) => {
+    dismissKeyboard()
     this.props.dispatch(confirmRequest(uid, token))
       .then(() => {
         this.props.dispatch(showFlashNotification({text: 'Friend confirmed!'}))

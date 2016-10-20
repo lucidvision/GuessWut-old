@@ -20,4 +20,4 @@ export {
 export const serverURL = 'https://safe-anchorage-11399.herokuapp.com/'
 
 export const minimumWordLength = 5
-export const maximumWordLength = 30
+export const maximumWordLength = 15

@@ -5,6 +5,8 @@ import { Create } from '~/components'
 import { updateCodeText } from '~/redux/modules/games'
 import { minimumWordLength, maximumWordLength } from '~/config/constants'
 
+const dismissKeyboard = require('dismissKeyboard')
+
 class CreateContainer extends Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -29,6 +31,7 @@ class CreateContainer extends Component {
     return shuffled.join(' ')
   }
   handleCreateButtonPressed = () => {
+    dismissKeyboard()
     const wordCount = this.state.message.split(' ').length
     if (wordCount < minimumWordLength || wordCount > maximumWordLength) {
       Alert.alert(
