@@ -1,22 +1,23 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
-import { colors, fontSizes } from '~/styles'
+import { View, StyleSheet, Image } from 'react-native'
 
 export default function DrawerHeader (props) {
   return (
-    <View>
-      <Text style={styles.headerText}>
-        Code
-      </Text>
+    <View style={styles.header}>
+      <Image style={styles.image} source={require('../../images/CodeLogo.png')} />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  headerText: {
+  header: {
     padding: 10,
-    fontSize: fontSizes.primary,
-    color: colors.blue,
-    textAlign: 'center'
+    marginTop: 10,
+    marginBottom: 10,
+    alignItems: 'center'
+  },
+  image: {
+    resizeMode: 'contain',
+    height: 90
   }
 })

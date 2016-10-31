@@ -8,7 +8,7 @@ export default function Hamburger (props) {
     <TouchableOpacity onPress={props.onPress} style={props.style}>
       <View style={{height: 40, width: 40, justifyContent: 'center', alignItems: 'center'}}>
         <Icon
-          name='ios-menu-outline'
+          name='ios-menu'
           size={props.size}
           color={colors.icon} />
       </View>

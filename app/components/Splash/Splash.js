@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TextInput, TouchableOpacity,
+import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity,
   TouchableWithoutFeedback } from 'react-native'
 import { colors, fontSizes } from '~/styles'
 
@@ -9,7 +9,7 @@ export default function Splash (props) {
   return (
       <TouchableWithoutFeedback onPress={ () => { dismissKeyboard() } }>
         <View style={styles.container}>
-          <Text style={styles.title}>Code</Text>
+          <Image style={styles.image} source={require('../../images/CodeLogoWhite.png')} />
           <View style={styles.loginContainer}>
             <TextInput
               style={styles.input}
@@ -62,11 +62,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.base
   },
-  title: {
-    color: colors.white,
-    fontSize: 40,
-    margin: 20,
-    textAlign: 'center'
+  image: {
+    resizeMode: 'contain'
   },
   loginContainer: {
     justifyContent: 'center',
