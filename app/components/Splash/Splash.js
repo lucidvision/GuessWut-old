@@ -58,12 +58,13 @@ Splash.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.base
   },
   image: {
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    marginBottom: 60
   },
   loginContainer: {
     justifyContent: 'center',
@@ -94,6 +95,6 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: fontSizes.secondary,
     textAlign: 'center',
-    margin: 30
+    margin: 40
   }
 })

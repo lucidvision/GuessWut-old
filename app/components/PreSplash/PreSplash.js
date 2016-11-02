@@ -1,7 +1,6 @@
 import React from 'react'
-import { View, StyleSheet, Image, Dimensions, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, Image, ActivityIndicator } from 'react-native'
 import { colors } from '~/styles'
-const { height } = Dimensions.get('window')
 
 export default function PreSplash (props) {
   return (
