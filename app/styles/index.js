@@ -17,3 +17,7 @@ export const fontSizes = {
   primary: 20,
   secondary: 16
 }
+
+export const fontFamilies = {
+  sanfran: 'System'
+}

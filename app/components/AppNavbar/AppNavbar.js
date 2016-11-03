@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Platform } from 'react-native'
 import NavigationBar from 'react-native-navbar'
-import { colors } from '~/styles'
+import { fontFamilies, fontSizes, colors } from '~/styles'
 
 export default function AppNavbar (props) {
   let optionalAttrs = {}
@@ -16,7 +16,7 @@ export default function AppNavbar (props) {
       {...optionalAttrs}
       style={Platform.OS === 'android' ? {marginTop: 8, marginBottom: 8} : null}
       tintColor={colors.navbar}
-      title={{title: props.title, tintColor: colors.white}}/>
+      title={{title: props.title, tintColor: colors.white, style: {fontFamily: fontFamilies.sanfran, fontSize: fontSizes.primary}}}/>
   )
 }
 
